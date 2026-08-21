@@ -295,7 +295,17 @@
     .stage-row .dist{grid-area:dist;text-align:left;}
     .stage-row .terrain{grid-area:terrain;}
     .stage-row .chev{grid-area:chev;}
-    .callout{flex-direction:column;align-items:flex-start;}
+    .callout{flex-direction:column;align-items:flex-start;padding:18px 16px;gap:16px;}
+    .callout .info{width:100%;}
+    .callout h2{font-size:1.32rem;}
+    .callout p{max-width:none;}
+    .countdown{flex-wrap:wrap;gap:10px;width:100%;}
+    .countdown .cell{flex:0 0 auto;}
+    .countdown .cell .n{min-width:46px;font-size:1.4rem;padding:7px 4px;}
+  }
+  @media (max-width:400px){
+    .wrap{padding:0 16px;}
+    h1.title{font-size:clamp(2.1rem,10vw,2.6rem);}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
