@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>La Vuelta a España 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..600;1,9..144,500&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wall:#EDE9DE;
+    --wall-2:#E2DBC9;
+    --panel:#F5F1E7;
+    --panel-2:#EFE8D8;
+    --ink:#221C15;
+    --ink-soft:#5E5647;
+    --ink-faint:#8A8171;
+    --line:#D2C9B2;
+    --azulejo:#2B5C73;
+    --azulejo-deep:#1C3F52;
+    --terracotta:#BC5A34;
+    --gold:#B98A2E;
+    --iron:#544A3E;
+    --red:#C11F2E;
+    --red-deep:#8E1420;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--wall);
+    color:var(--ink);
+    font-family:'Libre Franklin',sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--red);color:#fff;}
+  a{color:var(--azulejo-deep);}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  .tile-strip{
+    height:10px;
+    background:repeating-linear-gradient(135deg,var(--azulejo) 0 6px,var(--wall) 6px 12px);
+    opacity:.9;
+  }
+
+  header.masthead{padding:46px 0 8px;text-align:center;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  h1.title{
+    font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:560;
+    font-size:clamp(2.5rem,6.4vw,4.4rem);letter-spacing:-0.015em;
+    margin:.28em 0 .18em;line-height:1.02;
+  }
+  .route-bar{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink-soft);margin-bottom:26px;
+  }
+  .route-bar b{font-style:normal;color:var(--ink);font-weight:600;}
+
+  /* ribbon + bike marker */
+  .ribbon-wrap{position:relative;margin:44px 0 8px;padding-top:34px;}
+  .ribbon{display:flex;align-items:stretch;height:16px;border-radius:3px;overflow:hidden;gap:1.5px;}
+  .ribbon .seg{min-width:2px;cursor:default;transition:opacity .15s ease;}
+  .ribbon .seg:hover{opacity:.7;}
+  .ribbon .rest{
+    flex:0 0 9px;
+    background:repeating-linear-gradient(-45deg,var(--wall) 0 3px,var(--line) 3px 6px);
+    border-radius:0;
+  }
+  .seg-flat{background:var(--gold);}
+  .seg-hilly{background:var(--terracotta);}
+  .seg-mountains{background:var(--azulejo);}
+  .seg-itt{background:var(--iron);}
+  .ribbon-caption{
+    display:flex;justify-content:space-between;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+    margin-top:6px;letter-spacing:.03em;
+  }
+  .bike-marker{
+    position:absolute;top:0;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;
+    pointer-events:none;transition:left .25s ease;
+  }
+  .bike-marker .bike-label{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;white-space:nowrap;
+    background:var(--ink);color:var(--wall);padding:3px 8px;border-radius:10px;
+    margin-bottom:3px;letter-spacing:.02em;
+  }
+  .bike-marker svg{display:block;}
+  .bike-marker .stem{width:1.5px;height:8px;background:var(--ink);margin-top:-1px;}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+    margin:34px 0 26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .stat{padding:20px 10px;text-align:center;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,3.6vw,2.15rem);display:block;}
+  .stat .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);display:block;margin-top:2px;}
+
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px;}
+  .filter-btn{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.02em;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);
+    padding:8px 14px;border-radius:20px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px;transition:all .15s ease;
+  }
+  .filter-btn .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--wall);}
+  .filter-btn:hover{border-color:var(--ink);}
+  .filter-btn:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+
+  .callout{
+    background:var(--panel);border-left:4px solid var(--red);border-radius:2px;
+    padding:22px 24px;margin:0 0 40px;display:flex;flex-wrap:wrap;gap:20px;
+    justify-content:space-between;align-items:center;box-shadow:0 1px 0 var(--line);
+  }
+  .callout .info .eyebrow{color:var(--red-deep);}
+  .callout h2{font-family:'Fraunces',serif;font-weight:560;font-size:1.55rem;margin:.15em 0 .3em;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:46ch;}
+  .countdown{display:flex;gap:14px;}
+  .countdown .cell{text-align:center;}
+  .countdown .cell .n{
+    font-family:'IBM Plex Mono',monospace;font-size:1.7rem;font-weight:600;
+    background:var(--ink);color:var(--wall);padding:8px 4px;border-radius:4px;
+    min-width:52px;display:block;
+  }
+  .countdown .cell .u{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);display:block;margin-top:4px;}
+
+  h3.section-h{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.35rem,2.6vw,1.7rem);margin:52px 0 6px;}
+  .section-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;max-width:62ch;}
+
+  /* stage accordion */
+  .stage-list{border-top:1px solid var(--line);}
+  .stage-item{border-bottom:1px solid var(--line);}
+  .stage-row{
+    all:unset;box-sizing:border-box;cursor:pointer;
+    display:grid;grid-template-columns:44px 108px 1fr 84px 110px 18px;
+    gap:14px;align-items:center;width:100%;
+    padding:13px 10px 13px 14px;border-left:4px solid transparent;font-size:14px;
+  }
+  .stage-item[data-terrain="flat"] .stage-row{border-left-color:var(--gold);}
+  .stage-item[data-terrain="hilly"] .stage-row{border-left-color:var(--terracotta);}
+  .stage-item[data-terrain="mountains"] .stage-row{border-left-color:var(--azulejo);}
+  .stage-item[data-terrain="itt"] .stage-row{border-left-color:var(--iron);}
+  .stage-item.hidden{display:none;}
+  .stage-row:focus-visible{outline:2px solid var(--red);outline-offset:-2px;}
+  .stage-row .n{font-family:'IBM Plex Mono',monospace;color:var(--ink-faint);font-size:13px;}
+  .stage-row .date{font-family:'IBM Plex Mono',monospace;color:var(--ink-soft);font-size:12.5px;}
+  .stage-row .route strong{font-weight:600;}
+  .stage-row .route .note{display:block;color:var(--ink-soft);font-size:12.5px;margin-top:2px;}
+  .stage-row .dist{font-family:'IBM Plex Mono',monospace;text-align:right;font-size:13.5px;}
+  .stage-row .terrain{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;text-align:right;color:var(--ink-soft);}
+  .stage-row .chev{
+    color:var(--ink-faint);font-size:12px;transition:transform .2s ease;
+    display:inline-block;justify-self:end;
+  }
+  .stage-item.open .stage-row .chev{transform:rotate(90deg);color:var(--ink);}
+  .stage-item.open .stage-row{background:var(--panel-2);}
+
+  .stage-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease;}
+  .stage-item.open .stage-detail{grid-template-rows:1fr;}
+  .stage-detail > div{overflow:hidden;}
+  .detail-inner{
+    padding:4px 14px 20px 18px;
+    background:var(--panel-2);
+    font-size:13.3px;color:var(--ink-soft);
+  }
+  .detail-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:14px 22px;margin-top:6px;
+  }
+  .detail-block .dl{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--ink-faint);margin-bottom:4px;
+  }
+  .detail-block .dv{color:var(--ink);font-size:13.6px;line-height:1.5;}
+  .detail-block .dv.mono{font-family:'IBM Plex Mono',monospace;font-size:12.8px;}
+  .rest-row{
+    padding:9px 14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-style:italic;
+    color:var(--ink-faint);
+    background:repeating-linear-gradient(-45deg,var(--wall) 0 5px,var(--wall-2) 5px 10px);
+    border-bottom:1px solid var(--line);
+  }
+  .time-note{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+    margin:14px 0 0;font-style:italic;
+  }
+
+  .profile-block{grid-column:1/-1;margin-top:2px;}
+  .profile-chart{width:100%;height:52px;margin-top:4px;}
+  .profile-chart svg{display:block;width:100%;height:100%;}
+  .profile-note{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);
+    font-style:italic;margin-top:4px;
+  }
+  .climb-dot-hit{cursor:pointer;}
+  .climb-dot-hit:focus-visible{outline:2px solid var(--red);outline-offset:1px;border-radius:50%;}
+  .climb-tooltip{
+    position:fixed;z-index:120;max-width:220px;
+    background:var(--ink);color:var(--wall);
+    padding:10px 13px;border-radius:6px;
+    font-family:'Libre Franklin',sans-serif;font-size:12.5px;line-height:1.45;
+    box-shadow:0 6px 18px rgba(34,28,21,.28);
+    opacity:0;transform:translate(-50%,-100%);
+    pointer-events:none;transition:opacity .12s ease;
+  }
+  .climb-tooltip.show{opacity:1;}
+  .climb-tooltip .ct-name{display:block;font-weight:600;margin-bottom:2px;}
+  .climb-tooltip .ct-cat{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin-bottom:5px;
+  }
+
+  .back-today{
+    position:fixed;top:16px;right:20px;z-index:80;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.02em;
+    background:var(--ink);color:var(--wall);border:1px solid var(--ink);
+    padding:9px 16px;border-radius:20px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+    box-shadow:0 3px 10px rgba(34,28,21,.22);
+    opacity:0;transform:translateY(-6px);pointer-events:none;
+    transition:opacity .2s ease,transform .2s ease,background .15s ease;
+  }
+  .back-today.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .back-today:hover{background:var(--red);border-color:var(--red);}
+  .back-today:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+  .back-today .arrow{display:inline-block;transform:translateY(-1px);}
+  @media (max-width:640px){
+    .back-today{top:auto;bottom:18px;right:16px;}
+  }
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:18px 18px 20px;}
+  .card .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--azulejo-deep);}
+  .card h4{font-family:'Fraunces',serif;font-weight:560;font-size:1.15rem;margin:.3em 0 .4em;}
+  .card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
+  .card .stat-line{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);margin-top:10px;}
+
+  .rider-card{background:var(--panel);border-radius:3px;padding:18px 20px;border-top:3px solid var(--red);}
+  .rider-head{display:flex;align-items:center;gap:14px;margin-bottom:4px;}
+  .avatar{width:64px;height:64px;flex:none;border-radius:50%;}
+  .rider-id{min-width:0;}
+  .rider-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:1.2rem;margin:0 0 2px;}
+  .rider-card .team{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;}
+  .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:14.5px;margin:10px 0 8px;}
+  .rider-card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
+
+  /* jerseys + leaders */
+  .jersey-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:3px;
+    padding:20px 22px;margin-top:8px;
+  }
+  .jerseys{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;}
+  .jersey{display:flex;align-items:center;gap:12px;}
+  .avatar-sm{width:52px;height:52px;flex:none;border-radius:50%;}
+  .jersey .jl b{display:block;font-size:13.5px;}
+  .jersey .jl .role{font-size:11.5px;color:var(--ink-soft);}
+  .jersey .jl .leader{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);
+    margin-top:3px;
+  }
+  .leader-note{
+    margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line);
+    font-size:13px;color:var(--ink-soft);
+  }
+  .leader-note .eyebrow{color:var(--red-deep);}
+
+  footer{
+    margin-top:56px;padding:26px 0 60px;border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.7;color:var(--ink-faint);
+  }
+  footer p{margin:0 0 10px;}
+
+  @media (max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(3){border-left:none;}
+    .stat{border-bottom:1px solid var(--line);}
+    .stage-row{
+      grid-template-columns:1fr auto auto;
+      grid-template-areas:"date terrain chev" "route route route" "n dist dist";
+      row-gap:4px;
+    }
+    .stage-row .n{grid-area:n;}
+    .stage-row .date{grid-area:date;}
+    .stage-row .route{grid-area:route;}
+    .stage-row .dist{grid-area:dist;text-align:left;}
+    .stage-row .terrain{grid-area:terrain;}
+    .stage-row .chev{grid-area:chev;}
+    .callout{flex-direction:column;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<button class="back-today" id="backToTodayBtn" type="button" title="Scroll to today's stage">
+  <span class="arrow">↑</span> Back to Today
+</button>
+
+<div class="climb-tooltip" id="climbTooltip" role="tooltip"></div>
+
+<div class="tile-strip"></div>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">81st Edition · 22 August – 13 September 2026 · Times in Singapore (GMT+8)</div>
+    <h1 class="title">La Vuelta a España 2026</h1>
+    <div class="route-bar"><b>Monaco</b> — 3 weeks — <b>Granada</b></div>
+  </header>
+
+  <div class="ribbon-wrap">
+    <div class="bike-marker" id="bikeMarker" style="left:0">
+      <span class="bike-label" id="bikeLabel">—</span>
+      <svg width="30" height="19" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="7" cy="16" r="5.4" stroke="#221C15" stroke-width="1.8"/>
+        <circle cx="27" cy="16" r="5.4" stroke="#221C15" stroke-width="1.8"/>
+        <path d="M7 16L14 7H20M7 16L18 16L21.5 9M18 16L27 16M14 7L16.5 11" stroke="#221C15" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.5 9H24.5M21.5 9L20 11.5" stroke="#221C15" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M14 7H11.5" stroke="#221C15" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span class="stem"></span>
+    </div>
+    <div class="ribbon" id="ribbon">
+      <div class="seg seg-itt" data-stage="1" style="flex-grow:9.4" title="Stage 1 · Monaco–Monaco · 9.4km ITT"></div>
+      <div class="seg seg-hilly" data-stage="2" style="flex-grow:215.2" title="Stage 2 · Monaco–Manosque · 215.2km"></div>
+      <div class="seg seg-mountains" data-stage="3" style="flex-grow:166.7" title="Stage 3 · Gruissan–Font Romeu · 166.7km"></div>
+      <div class="seg seg-mountains" data-stage="4" style="flex-grow:104.9" title="Stage 4 · Andorra la Vella–Andorra la Vella · 104.9km"></div>
+      <div class="seg seg-hilly" data-stage="5" style="flex-grow:171.1" title="Stage 5 · Falset–Roquetes · 171.1km"></div>
+      <div class="seg seg-mountains" data-stage="6" style="flex-grow:176.8" title="Stage 6 · Alcossebre–Castelló · 176.8km"></div>
+      <div class="seg seg-mountains" data-stage="7" style="flex-grow:149.9" title="Stage 7 · Vall d'Alba–Aramón Valdelinares · 149.9km"></div>
+      <div class="seg seg-flat" data-stage="8" style="flex-grow:176.4" title="Stage 8 · Puçol–Xeraco · 176.4km"></div>
+      <div class="seg seg-mountains" data-stage="9" style="flex-grow:187.5" title="Stage 9 · La Vila Joiosa–Alto de Aitana · 187.5km"></div>
+      <div class="rest" data-rest="1" title="Rest day · Monday 31 August"></div>
+      <div class="seg seg-hilly" data-stage="10" style="flex-grow:184.5" title="Stage 10 · Alcaraz–Elche de la Sierra · 184.5km"></div>
+      <div class="seg seg-flat" data-stage="11" style="flex-grow:156.1" title="Stage 11 · Cartagena–Lorca · 156.1km"></div>
+      <div class="seg seg-mountains" data-stage="12" style="flex-grow:166.5" title="Stage 12 · Vera–Calar Alto · 166.5km"></div>
+      <div class="seg seg-mountains" data-stage="13" style="flex-grow:193.2" title="Stage 13 · Almuñécar–Loja · 193.2km"></div>
+      <div class="seg seg-mountains" data-stage="14" style="flex-grow:152.7" title="Stage 14 · Jaén–Sierra de la Pandera · 152.7km"></div>
+      <div class="seg seg-mountains" data-stage="15" style="flex-grow:181.2" title="Stage 15 · Palma del Río–Córdoba · 181.2km"></div>
+      <div class="rest" data-rest="2" title="Rest day · Monday 7 September"></div>
+      <div class="seg seg-flat" data-stage="16" style="flex-grow:186" title="Stage 16 · Cortegana–La Rábida · 186km"></div>
+      <div class="seg seg-flat" data-stage="17" style="flex-grow:189.2" title="Stage 17 · Dos Hermanas–Sevilla · 189.2km"></div>
+      <div class="seg seg-itt" data-stage="18" style="flex-grow:32.5" title="Stage 18 · El Puerto de Santa María–Jerez · 32.5km ITT"></div>
+      <div class="seg seg-hilly" data-stage="19" style="flex-grow:205.1" title="Stage 19 · Vélez-Málaga–Peñas Blancas · 205.1km"></div>
+      <div class="seg seg-mountains" data-stage="20" style="flex-grow:187" title="Stage 20 · La Calahorra–Collado del Alguacil · 187km"></div>
+      <div class="seg seg-hilly" data-stage="21" style="flex-grow:99.4" title="Stage 21 · Carrefour Granada–Granada · 99.4km"></div>
+    </div>
+    <div class="ribbon-caption"><span>Stage 1 · Monaco</span><span>Stage 21 · Granada</span></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="num mono">21</span><span class="lbl">Stages</span></div>
+    <div class="stat"><span class="num mono">3,275 km</span><span class="lbl">Total distance</span></div>
+    <div class="stat"><span class="num mono">10</span><span class="lbl">Mountain stages</span></div>
+    <div class="stat"><span class="num mono">2</span><span class="lbl">Time trials</span></div>
+    <div class="stat"><span class="num mono">2</span><span class="lbl">Rest days</span></div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All 21</button>
+    <button class="filter-btn" data-filter="flat"><span class="dot" style="background:var(--gold)"></span>Flat · 4</button>
+    <button class="filter-btn" data-filter="hilly"><span class="dot" style="background:var(--terracotta)"></span>Hilly · 5</button>
+    <button class="filter-btn" data-filter="mountains"><span class="dot" style="background:var(--azulejo)"></span>Mountains · 10</button>
+    <button class="filter-btn" data-filter="itt"><span class="dot" style="background:var(--iron)"></span>Time trial · 2</button>
+  </div>
+
+  <div class="callout">
+    <div class="info">
+      <div class="eyebrow">Grand Départ</div>
+      <h2>Monaco, Saturday 22 August</h2>
+      <p>Stage 1 is a short, technical individual time trial through the streets of Monte Carlo — 9.4km to decide the first red jersey of the 81st Vuelta a España.</p>
+    </div>
+    <div class="countdown mono" id="countdown">
+      <div class="cell"><span class="n" id="cd-d">–</span><span class="u">Days</span></div>
+      <div class="cell"><span class="n" id="cd-h">–</span><span class="u">Hrs</span></div>
+      <div class="cell"><span class="n" id="cd-m">–</span><span class="u">Min</span></div>
+      <div class="cell"><span class="n" id="cd-s">–</span><span class="u">Sec</span></div>
+    </div>
+  </div>
+
+  <h3 class="section-h">Stage by stage</h3>
+  <p class="section-sub">All 21 stages, start to finish. Filter by terrain above, tap a stage to open its profile, categorised climbs and estimated timing. On each climb profile, dot size marks climb category — Cat.3 (smallest) through Cat.1, with Categoría Especial (red, largest) reserved for Stage 20's summit finish.</p>
+
+  <div class="stage-list" id="stageList">
+
+    <div class="stage-item" data-terrain="itt" data-date="2026-08-22">
+      <button class="stage-row" aria-expanded="false" aria-controls="d1">
+        <span class="n">01</span><span class="date">Sat 22 Aug</span>
+        <span class="route"><strong>Monaco → Monaco</strong><span class="note">Technical circuit through Monte Carlo; first red jersey</span></span>
+        <span class="dist mono">9.4 km</span><span class="terrain">Time trial</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d1"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Individual time trial — decides the first leader</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">Not published — short technical circuit</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">None categorised; tight corners through Monte Carlo</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">First rider ≈ 10:45 PM · Last (GC favourites) ≈ 1:15 AM +1</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="1"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="hilly" data-date="2026-08-23">
+      <button class="stage-row" aria-expanded="false" aria-controls="d2">
+        <span class="n">02</span><span class="date">Sun 23 Aug</span>
+        <span class="route"><strong>Monaco → Manosque</strong><span class="note">Longest stage of the race; uphill drag to the line</span></span>
+        <span class="dist mono">215.2 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d2"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Hilly, rolling terrain — uphill finish suits puncheurs</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">≈ 2,630 m</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">2 × category 3, both in the first half</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:30 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="2"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-08-24">
+      <button class="stage-row" aria-expanded="false" aria-controls="d3">
+        <span class="n">03</span><span class="date">Mon 24 Aug</span>
+        <span class="route"><strong>Gruissan → Font Romeu</strong><span class="note">Summit finish above 1,800m; first real GC gaps</span></span>
+        <span class="dist mono">166.7 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d3"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — first summit finish of the race</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">≈ 2,676 m</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Col de Mont-Louis (cat.1) · Font Romeu, summit ≈1,800m</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="3"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-08-25">
+      <button class="stage-row" aria-expanded="false" aria-controls="d4">
+        <span class="n">04</span><span class="date">Tue 25 Aug</span>
+        <span class="route"><strong>Andorra la Vella → Andorra la Vella</strong><span class="note">Short and explosive; three big climbs, little respite</span></span>
+        <span class="dist mono">104.9 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d4"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — shortest road stage, downhill finish</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">≈ 2,953 m</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Port de Envalira (cat.1) · Collada de Beixalis (cat.1) · Coll d'Ordino (cat.1) · Alto de la Comella (cat.3)</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 10:45 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="4"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="hilly" data-date="2026-08-26">
+      <button class="stage-row" aria-expanded="false" aria-controls="d5">
+        <span class="n">05</span><span class="date">Wed 26 Aug</span>
+        <span class="route"><strong>Falset → Roquetes</strong><span class="note">Rolling Catalan coast; sprinters' chance</span></span>
+        <span class="dist mono">171.1 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d5"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Hilly — likely bunch sprint</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Alto de Paüls (cat.3), ≈20km from the finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:30 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="5"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-08-27">
+      <button class="stage-row" aria-expanded="false" aria-controls="d6">
+        <span class="n">06</span><span class="date">Thu 27 Aug</span>
+        <span class="route"><strong>Alcossebre → Castelló</strong><span class="note">Categorised climbing inland from the coast</span></span>
+        <span class="dist mono">176.8 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d6"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — profile confirmed, specific climbs TBC</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Categorised climbing inland — full list not yet reliable at time of writing</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:20 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="6"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-08-28">
+      <button class="stage-row" aria-expanded="false" aria-controls="d7">
+        <span class="n">07</span><span class="date">Fri 28 Aug</span>
+        <span class="route"><strong>Vall d'Alba → Aramón Valdelinares</strong><span class="note">Summit finish; the steepest climbing of week one</span></span>
+        <span class="dist mono">149.9 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d7"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — back-to-back summit finish after Stage 6</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">≈ 3,572 m — the most of the race so far</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Summit finish at Aramón Valdelinares (ski resort)</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 10:50 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="7"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="flat" data-date="2026-08-29">
+      <button class="stage-row" aria-expanded="false" aria-controls="d8">
+        <span class="n">08</span><span class="date">Sat 29 Aug</span>
+        <span class="route"><strong>Puçol → Xeraco</strong><span class="note">First stage profiled flat by the organisers</span></span>
+        <span class="dist mono">176.4 km</span><span class="terrain">Flat</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d8"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Flat — first pure sprint stage</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Puerto de Barx (cat.2), ≈22km from the finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="8"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-08-30">
+      <button class="stage-row" aria-expanded="false" aria-controls="d9">
+        <span class="n">09</span><span class="date">Sun 30 Aug</span>
+        <span class="route"><strong>La Vila Joiosa → Alto de Aitana</strong><span class="note">Six climbs; category-1 summit returns after years away</span></span>
+        <span class="dist mono">187.5 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d9"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — hardest day of week one, heat a factor</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">6 categorised (2×cat.1, 2×cat.2, 2×cat.3) · Alto de Aitana, summit finish (cat.1)</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:40 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="9"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="rest-row">Rest day — Monday 31 August</div>
+
+    <div class="stage-item" data-terrain="hilly" data-date="2026-09-01">
+      <button class="stage-row" aria-expanded="false" aria-controls="d10">
+        <span class="n">10</span><span class="date">Tue 1 Sep</span>
+        <span class="route"><strong>Alcaraz → Elche de la Sierra</strong><span class="note">Rolling finish, uphill in the final kilometre</span></span>
+        <span class="dist mono">184.5 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d10"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Hilly — breakaway vs. sprinters' teams</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">3 categorised · Puerto de Socovos (final), ≈20km from the finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:30 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="10"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="flat" data-date="2026-09-02">
+      <button class="stage-row" aria-expanded="false" aria-controls="d11">
+        <span class="n">11</span><span class="date">Wed 2 Sep</span>
+        <span class="route"><strong>Cartagena → Lorca</strong><span class="note">Sprinters' day, one late categorised climb</span></span>
+        <span class="dist mono">156.1 km</span><span class="terrain">Flat</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d11"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Flat — expected bunch sprint</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Alto del Morrón (cat.3), 33.5km from the finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:00 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="11"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-09-03">
+      <button class="stage-row" aria-expanded="false" aria-controls="d12">
+        <span class="n">12</span><span class="date">Thu 3 Sep</span>
+        <span class="route"><strong>Vera → Calar Alto</strong><span class="note">Highest finish of the race, above 2,100m</span></span>
+        <span class="dist mono">166.5 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d12"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — highest-altitude finish of the route</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Puerto Los Barrancos (cat.3) · Alto Cóbdar · Collado García · Alto de Velefique (cat.1) · Calar Alto, summit ≈2,100m+</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="12"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-09-04">
+      <button class="stage-row" aria-expanded="false" aria-controls="d13">
+        <span class="n">13</span><span class="date">Fri 4 Sep</span>
+        <span class="route"><strong>Almuñécar → Loja</strong><span class="note">Early climbing gives way to a flat run-in</span></span>
+        <span class="dist mono">193.2 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d13"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Medium mountain — could still end in a reduced sprint</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Puerto Los Guájares (cat.1) · Puerto de Granada (cat.2), then flat to the line</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:40 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="13"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-09-05">
+      <button class="stage-row" aria-expanded="false" aria-controls="d14">
+        <span class="n">14</span><span class="date">Sat 5 Sep</span>
+        <span class="route"><strong>Jaén → Sierra de la Pandera</strong><span class="note">Feared summit finish, in the Vuelta for a seventh time</span></span>
+        <span class="dist mono">152.7 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d14"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — altitude and heat on a savage finish</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Puerto de Los Villares (cat.2) · Puerto de Locubín (cat.2) · Sierra de la Pandera, summit finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:00 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="14"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-09-06">
+      <button class="stage-row" aria-expanded="false" aria-controls="d15">
+        <span class="n">15</span><span class="date">Sun 6 Sep</span>
+        <span class="route"><strong>Palma del Río → Córdoba</strong><span class="note">Breakaway terrain before the second rest day</span></span>
+        <span class="dist mono">181.2 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d15"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Medium mountain — likely breakaway day</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">3 × category 3 · Puerto Artafi (final), ≈30km from the finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:45 PM · Finish ≈ 11:30 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="15"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="rest-row">Rest day — Monday 7 September</div>
+
+    <div class="stage-item" data-terrain="flat" data-date="2026-09-08">
+      <button class="stage-row" aria-expanded="false" aria-controls="d16">
+        <span class="n">16</span><span class="date">Tue 8 Sep</span>
+        <span class="route"><strong>Cortegana → La Rábida</strong><span class="note">Coastal run-in, high speeds expected</span></span>
+        <span class="dist mono">186 km</span><span class="terrain">Flat</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d16"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Flat — sea wind could complicate the sprint</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">None categorised</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="16"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="flat" data-date="2026-09-09">
+      <button class="stage-row" aria-expanded="false" aria-controls="d17">
+        <span class="n">17</span><span class="date">Wed 9 Sep</span>
+        <span class="route"><strong>Dos Hermanas → Sevilla</strong><span class="note">Flattest stage of the race</span></span>
+        <span class="dist mono">189.2 km</span><span class="terrain">Flat</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d17"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Flat — last clear sprint opportunity</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">None categorised</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="17"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="itt" data-date="2026-09-10">
+      <button class="stage-row" aria-expanded="false" aria-controls="d18">
+        <span class="n">18</span><span class="date">Thu 10 Sep</span>
+        <span class="route"><strong>El Puerto de Santa María → Jerez</strong><span class="note">Coastal time trial; final week GC test</span></span>
+        <span class="dist mono">32.5 km</span><span class="terrain">Time trial</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d18"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Individual time trial — could re-shape the GC</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">Mainly flat; coastal wind is the wildcard</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">None categorised</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">First rider ≈ 7:00 PM · Last (GC favourites) ≈ 10:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="18"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="hilly" data-date="2026-09-11">
+      <button class="stage-row" aria-expanded="false" aria-controls="d19">
+        <span class="n">19</span><span class="date">Fri 11 Sep</span>
+        <span class="route"><strong>Vélez-Málaga → Peñas Blancas</strong><span class="note">Second-longest stage, category-1 uphill finish</span></span>
+        <span class="dist mono">205.1 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d19"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Hilly, uphill arrival — could cost the red jersey</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">3 categorised, incl. Peñas Blancas–Estepona (cat.1), summit finish</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:45 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="19"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="mountains" data-date="2026-09-12">
+      <button class="stage-row" aria-expanded="false" aria-controls="d20">
+        <span class="n">20</span><span class="date">Sat 12 Sep</span>
+        <span class="route"><strong>La Calahorra → Collado del Alguacil</strong><span class="note">Categoría Especial summit — the hardest climb of the race</span></span>
+        <span class="dist mono">187 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d20"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Mountains — the queen stage, penultimate day</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">5,000m+ across 5 climbs</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Cat.3 opener · Alto de Hazallanas (cat.1, climbed twice) · Puerto de El Purche (cat.1) · Collado del Alguacil — Categoría Especial, 8.3km at 9.8%</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:30 PM · Finish ≈ 11:15 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="20"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="stage-item" data-terrain="hilly" data-date="2026-09-13">
+      <button class="stage-row" aria-expanded="false" aria-controls="d21">
+        <span class="n">21</span><span class="date">Sun 13 Sep</span>
+        <span class="route"><strong>Carrefour Granada → Granada</strong><span class="note">Circuit finish, five ascents up to the Alhambra</span></span>
+        <span class="dist mono">99.4 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
+      </button>
+      <div class="stage-detail"><div id="d21"><div class="detail-inner">
+        <div class="detail-grid">
+          <div class="detail-block"><div class="dl">Stage type</div><div class="dv">Hilly — decisive uphill finale, first non-Madrid/Santiago finish since 1986</div></div>
+          <div class="detail-block"><div class="dl">Elevation gain</div><div class="dv mono">TBC</div></div>
+          <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Alhambra circuit climb, uncategorised, ridden 5 times</div></div>
+          <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 8:30 PM · Finish ≈ 11:45 PM</div></div>
+          <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="21"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+  </div>
+  <p class="time-note">Start and finish times are estimates based on typical Vuelta scheduling for each stage type, not official times — confirm at lavuelta.es closer to each stage.</p>
+
+  <h3 class="section-h">Where the race could be won</h3>
+  <p class="section-sub">Five days that are built to shape the general classification.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="tag">Stage 3</div>
+      <h4>Font Romeu</h4>
+      <p>The first summit finish of the race, reached after a first category climb over the Col de Mont-Louis. Too early to win the Vuelta, but the first gaps between GC riders can open here.</p>
+      <div class="stat-line">1,800m alt. · 166.7 km</div>
+    </div>
+    <div class="card">
+      <div class="tag">Stage 9</div>
+      <h4>Alto de Aitana</h4>
+      <p>Six climbs across 187.5 km before a category-1 summit finish above the Costa Blanca. Route designer Fernando Escartín has warned that "the heat could make this already challenging stage even tougher."</p>
+      <div class="stat-line">6 categorised climbs</div>
+    </div>
+    <div class="card">
+      <div class="tag">Stage 12</div>
+      <h4>Calar Alto</h4>
+      <p>The highest finish of the 2026 route, over 2,100m above sea level in the Sierra de los Filabres, reached straight off the back of the Alto de Velefique.</p>
+      <div class="stat-line">2,100m+ alt.</div>
+    </div>
+    <div class="card">
+      <div class="tag">Stage 18</div>
+      <h4>Jerez de la Frontera</h4>
+      <p>A 32.5km individual time trial along the Bay of Cádiz in the final week, when the GC is usually settling — coastal wind could still turn the standings upside down.</p>
+      <div class="stat-line">32.5 km · Individual TT</div>
+    </div>
+    <div class="card">
+      <div class="tag">Stage 20</div>
+      <h4>Collado del Alguacil</h4>
+      <p>The only climb in the race rated Categoría Especial, on the penultimate day. A brutal, near-double-digit-gradient finish built to decide the race with almost nothing left to give.</p>
+      <div class="stat-line">Categoría Especial · 8.3km at 9.8%</div>
+    </div>
+  </div>
+
+  <h3 class="section-h">Contenders</h3>
+  <p class="section-sub">Form and headlines heading into the Grand Départ — as of 21 August 2026.</p>
+  <div class="cards">
+    <div class="rider-card">
+      <div class="rider-head">
+        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in UAE Team Emirates-XRG colours">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#F2EFE7"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#C11F2E"/>
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#201B16"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#F2EFE7"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="rider-id"><h4>Tadej Pogačar</h4><div class="team">UAE Team Emirates-XRG</div></div>
+      </div>
+      <div class="headline">Chasing the Grand Slam</div>
+      <p>Fresh off a record-tying fifth Tour de France title, Pogačar returns to the Vuelta for the first time since his 2019 debut, when he finished third and took the young rider jersey. A win in Granada would complete his set of all three Grand Tour titles.</p>
+    </div>
+    <div class="rider-card">
+      <div class="rider-head">
+        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in Red Bull–BORA–hansgrohe colours">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#1B2A44"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#E8B93E"/>
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#C11F2E"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#1B2A44"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="rider-id"><h4>Primož Roglič</h4><div class="team">Red Bull–BORA–hansgrohe</div></div>
+      </div>
+      <div class="headline">Riding for a record</div>
+      <p>A four-time Vuelta champion (2019, 2020, 2021, 2024), Roglič skipped this year's Tour de France to build toward a fifth Vuelta title — which would make him the race's outright record holder, ahead of Roberto Heras.</p>
+    </div>
+    <div class="rider-card">
+      <div class="rider-head">
+        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in Team Visma | Lease a Bike colours">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#1B1712"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#F2C438"/>
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#1B1712"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#1B1712"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="rider-id"><h4>Jonas Vingegaard</h4><div class="team">Team Visma | Lease a Bike</div></div>
+      </div>
+      <div class="headline">Defending champion, doubtful start</div>
+      <p>Won the 2025 Vuelta by 1:16 over João Almeida, but a broken collarbone from a crash in stage 15 of this year's Tour de France has put his participation in Spain in doubt.</p>
+    </div>
+  </div>
+
+  <h3 class="section-h">Jerseys &amp; current leaders</h3>
+  <div class="jersey-panel">
+    <div class="jerseys">
+      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated red jersey — general classification leader's jersey">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#C11F2E"/>
+        
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#8E1420"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg><span class="jl"><b>Red</b><span class="role">General classification</span><span class="leader" id="lead-gc">Leader: —</span></span></div>
+      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated green jersey — points classification leader's jersey">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#4C7A3B"/>
+        
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#33512A"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg><span class="jl"><b>Green</b><span class="role">Points classification</span><span class="leader" id="lead-pts">Leader: —</span></span></div>
+      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated white jersey with blue polka dots — mountains classification leader's jersey">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#2B5C73"/>
+        <circle cx="24" cy="80" r="2.6" fill="#2B5C73"/><circle cx="34" cy="72" r="2.6" fill="#2B5C73"/><circle cx="44" cy="86" r="2.6" fill="#2B5C73"/><circle cx="56" cy="74" r="2.6" fill="#2B5C73"/><circle cx="64" cy="84" r="2.6" fill="#2B5C73"/><circle cx="50" cy="90" r="2.6" fill="#2B5C73"/>
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#2B5C73"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg><span class="jl"><b>Blue polka dot</b><span class="role">Mountains classification</span><span class="leader" id="lead-kom">Leader: —</span></span></div>
+      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated white jersey — best young rider's jersey">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
+        
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#B8AF9A"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg><span class="jl"><b>White</b><span class="role">Best young rider, under 26</span><span class="leader" id="lead-you">Leader: —</span></span></div>
+    </div>
+    <p class="leader-note"><span class="eyebrow">Note</span> — the 2026 Vuelta hasn't started yet, so there's no leader in any classification. The first red jersey will be decided by Stage 1's time trial on Saturday 22 August; this page is static and won't update automatically once racing begins, so check lavuelta.es for live standings.</p>
+  </div>
+
+  <footer>
+    <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered; the final start list is confirmed close to the Grand Départ. Distances, climb categories and finish details may still be adjusted by race organisers before Saturday.</p>
+    <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets the start of race day (22 Aug, 12:00 AM SGT).</p>
+    <p>Contender notes reflect team news and 2025–26 form as reported ahead of the race, not confirmed results — the 2026 Vuelta a España has not yet started.</p>
+  </footer>
+</div>
+
+<script>
+  // terrain filter
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.stage-item');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(it=>{
+        it.classList.toggle('hidden', f!=='all' && it.dataset.terrain!==f);
+      });
+    });
+  });
+
+  // accordion toggles
+  document.querySelectorAll('.stage-row').forEach(row=>{
+    row.addEventListener('click', ()=>{
+      const item = row.closest('.stage-item');
+      const open = item.classList.toggle('open');
+      row.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // countdown to race day (22 Aug 2026, 12:00 AM SGT)
+  const target = new Date('2026-08-22T00:00:00+08:00').getTime();
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const h = Math.floor(diff/3600000); diff -= h*3600000;
+    const m = Math.floor(diff/60000); diff -= m*60000;
+    const s = Math.floor(diff/1000);
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick,1000);
+
+  // bike marker — position on the ribbon for "today" in Singapore time
+  const stageDates = {
+    '2026-08-22':1,'2026-08-23':2,'2026-08-24':3,'2026-08-25':4,'2026-08-26':5,
+    '2026-08-27':6,'2026-08-28':7,'2026-08-29':8,'2026-08-30':9,
+    '2026-09-01':10,'2026-09-02':11,'2026-09-03':12,'2026-09-04':13,'2026-09-05':14,'2026-09-06':15,
+    '2026-09-08':16,'2026-09-09':17,'2026-09-10':18,'2026-09-11':19,'2026-09-12':20,'2026-09-13':21
+  };
+  const restDates = {'2026-08-31':1,'2026-09-07':2};
+  const raceStart = '2026-08-22', raceEnd = '2026-09-13';
+
+  function todaySGT(){
+    const now = new Date();
+    const sgt = new Date(now.getTime() + now.getTimezoneOffset()*60000 + 8*3600000);
+    const y = sgt.getFullYear();
+    const m = String(sgt.getMonth()+1).padStart(2,'0');
+    const d = String(sgt.getDate()).padStart(2,'0');
+    return y+'-'+m+'-'+d;
+  }
+
+  function placeBikeMarker(){
+    const ribbon = document.getElementById('ribbon');
+    const marker = document.getElementById('bikeMarker');
+    const label = document.getElementById('bikeLabel');
+    const today = todaySGT();
+    const ribbonRect = ribbon.getBoundingClientRect();
+    let x = 0, text = '';
+
+    if (today < raceStart){
+      x = 0;
+      text = 'Grand Départ · Sat 22 Aug';
+    } else if (today > raceEnd){
+      x = ribbonRect.width;
+      text = 'Finished · Granada';
+    } else if (stageDates[today]){
+      const n = stageDates[today];
+      const seg = ribbon.querySelector('.seg[data-stage="'+n+'"]');
+      const segRect = seg.getBoundingClientRect();
+      x = (segRect.left - ribbonRect.left) + segRect.width/2;
+      text = 'Stage '+n+' · Today';
+    } else if (restDates[today]){
+      const restEl = ribbon.querySelector('.rest[data-rest="'+restDates[today]+'"]');
+      const restRect = restEl.getBoundingClientRect();
+      x = (restRect.left - ribbonRect.left) + restRect.width/2;
+      text = 'Rest day';
+    } else {
+      x = 0;
+      text = 'Grand Départ · Sat 22 Aug';
+    }
+
+    marker.style.left = x + 'px';
+    label.textContent = text;
+    marker.setAttribute('title', text);
+  }
+
+  placeBikeMarker();
+  window.addEventListener('resize', placeBikeMarker);
+
+  // climb profiles — schematic elevation shapes (0–1 relative height), not GPX data
+  const stageProfiles = {
+    1:  [0.10,0.13,0.10,0.14,0.10],
+    2:  [0.10,0.30,0.15,0.35,0.15,0.42],
+    3:  [0.12,0.50,0.35,0.92],
+    4:  [0.15,0.70,0.30,0.85,0.35,0.92,0.40,0.60,0.25],
+    5:  [0.10,0.12,0.10,0.40,0.15,0.12],
+    6:  [0.15,0.40,0.30,0.60,0.35,0.72],
+    7:  [0.15,0.30,0.25,0.50,0.40,0.95],
+    8:  [0.10,0.10,0.12,0.45,0.15,0.10],
+    9:  [0.15,0.35,0.25,0.45,0.30,0.55,0.35,0.65,0.40,0.75,0.50,0.95],
+    10: [0.15,0.30,0.20,0.40,0.25,0.50,0.35,0.45],
+    11: [0.10,0.10,0.35,0.15,0.10,0.10],
+    12: [0.15,0.30,0.20,0.35,0.25,0.45,0.55,0.90,0.70,1.00],
+    13: [0.15,0.60,0.35,0.75,0.45,0.30,0.15,0.12],
+    14: [0.15,0.35,0.25,0.45,0.35,0.60,0.75,0.95],
+    15: [0.15,0.30,0.20,0.35,0.25,0.40,0.50,0.30,0.15,0.10],
+    16: [0.15,0.25,0.18,0.22,0.15,0.10,0.10],
+    17: [0.10,0.11,0.10,0.10,0.11,0.10],
+    18: [0.10,0.12,0.10,0.11,0.10],
+    19: [0.10,0.10,0.12,0.35,0.25,0.50,0.40,0.70,0.85],
+    20: [0.15,0.35,0.25,0.65,0.40,0.55,0.35,0.70,0.50,1.00],
+    21: [0.15,0.40,0.20,0.45,0.25,0.50,0.30,0.55,0.35,0.65,0.80]
+  };
+  const terrainColor = {flat:'var(--gold)',hilly:'var(--terracotta)',mountains:'var(--azulejo)',itt:'var(--iron)'};
+
+  // categorised climbs per stage — {i: index into stageProfiles[n], cat, name}
+  // only climbs with a confirmed category are marked; unconfirmed peaks are left dotless
+  const stageClimbMarkers = {
+    2:  [{i:1,cat:'3',name:'Category 3 climb'},{i:3,cat:'3',name:'Category 3 climb'}],
+    3:  [{i:1,cat:'1',name:'Col de Mont-Louis'}],
+    4:  [{i:1,cat:'1',name:'Port de Envalira'},{i:3,cat:'1',name:'Collada de Beixalis'},{i:5,cat:'1',name:"Coll d'Ordino"},{i:7,cat:'3',name:'Alto de la Comella'}],
+    5:  [{i:3,cat:'3',name:'Alto de Paüls'}],
+    8:  [{i:3,cat:'2',name:'Puerto de Barx'}],
+    9:  [{i:1,cat:'3',name:'Category 3 climb'},{i:3,cat:'3',name:'Category 3 climb'},{i:5,cat:'2',name:'Category 2 climb'},{i:7,cat:'2',name:'Category 2 climb'},{i:9,cat:'1',name:'Category 1 climb'},{i:11,cat:'1',name:'Alto de Aitana — summit finish'}],
+    11: [{i:2,cat:'3',name:'Alto del Morrón'}],
+    12: [{i:1,cat:'3',name:'Puerto Los Barrancos'},{i:7,cat:'1',name:'Alto de Velefique'}],
+    13: [{i:1,cat:'1',name:'Puerto Los Guájares'},{i:3,cat:'2',name:'Puerto de Granada'}],
+    14: [{i:1,cat:'2',name:'Puerto de Los Villares'},{i:3,cat:'2',name:'Puerto de Locubín'}],
+    15: [{i:1,cat:'3',name:'Category 3 climb'},{i:3,cat:'3',name:'Category 3 climb'},{i:5,cat:'3',name:'Puerto Artafi'}],
+    19: [{i:8,cat:'1',name:'Peñas Blancas–Estepona — summit finish'}],
+    20: [{i:1,cat:'3',name:'Category 3 opener'},{i:3,cat:'1',name:'Alto de Hazallanas (1st ascent)'},{i:5,cat:'1',name:'Puerto de El Purche'},{i:7,cat:'1',name:'Alto de Hazallanas (2nd ascent)'},{i:9,cat:'E',name:'Collado del Alguacil — summit finish'}]
+  };
+  const catRadius = {'3':3,'2':4.3,'1':5.6,'E':7};
+  const catInfo = {
+    '3': {label:'Category 3', desc:'The mildest categorised climb — enough to shake up a sprint, rarely enough to decide the GC.'},
+    '2': {label:'Category 2', desc:'A real test of the legs — long or steep enough to soften up a group before the finish.'},
+    '1': {label:'Category 1', desc:'A serious mountain — length and gradient combine to make or break a GC rider\u2019s day.'},
+    'E': {label:'Categoría Especial', desc:'The hardest rating the Vuelta gives out — reserved for the toughest climbs in the race.'}
+  };
+
+  function profileSVG(points, color, markers, widthPx){
+    const w = widthPx || 300, h=52, pad=4;
+    const n=points.length;
+    const stepX=(w-2*pad)/(n-1);
+    const coords=points.map((p,i)=>[pad+i*stepX, h-pad-(p*(h-2*pad))]);
+    let line='M'+coords[0][0].toFixed(1)+','+coords[0][1].toFixed(1);
+    for(let i=1;i<coords.length;i++){ line+=' L'+coords[i][0].toFixed(1)+','+coords[i][1].toFixed(1); }
+    const last=coords[coords.length-1], first=coords[0];
+    const area=line+` L${last[0].toFixed(1)},${h-pad} L${first[0].toFixed(1)},${h-pad} Z`;
+    let dots='';
+    (markers||[]).forEach(m=>{
+      const c = coords[m.i];
+      if(!c) return;
+      const r = catRadius[m.cat] || 3.5;
+      const fill = m.cat==='E' ? 'var(--red)' : color;
+      const name = (m.name || '').replace(/"/g,'&quot;');
+      const label = catInfo[m.cat] ? catInfo[m.cat].label : '';
+      dots += `<circle class="climb-dot-hit" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r+5}" fill="transparent"
+                 tabindex="0" role="button" aria-label="${name} — ${label}"
+                 data-name="${name}" data-cat="${m.cat}"></circle>
+               <circle class="climb-dot" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r}" fill="${fill}" stroke="var(--panel-2)" stroke-width="1.4" pointer-events="none"></circle>`;
+    });
+    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+      <path d="${area}" fill="${color}" opacity="0.16"></path>
+      <path d="${line}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      ${dots}
+    </svg>`;
+  }
+
+  function renderProfiles(){
+    document.querySelectorAll('.profile-chart').forEach(el=>{
+      const n = el.dataset.profile;
+      const item = el.closest('.stage-item');
+      const terrain = item ? item.dataset.terrain : 'mountains';
+      const points = stageProfiles[n];
+      if(!points) return;
+      const widthPx = el.getBoundingClientRect().width || 300;
+      el.innerHTML = profileSVG(points, terrainColor[terrain] || 'var(--ink)', stageClimbMarkers[n], widthPx);
+    });
+  }
+  renderProfiles();
+  window.addEventListener('resize', renderProfiles);
+
+  // climb-dot tooltip — works on hover, click/tap, and keyboard focus
+  const climbTip = document.getElementById('climbTooltip');
+  function showClimbTip(hit){
+    const name = hit.dataset.name;
+    const cat = hit.dataset.cat;
+    const info = catInfo[cat];
+    if(!info) return;
+    climbTip.innerHTML = `<span class="ct-name">${name}</span><span class="ct-cat">${info.label}</span>${info.desc}`;
+    const r = hit.getBoundingClientRect();
+    let left = r.left + r.width/2;
+    left = Math.max(90, Math.min(window.innerWidth-90, left));
+    climbTip.style.left = left + 'px';
+    climbTip.style.top = (r.top - 10) + 'px';
+    climbTip.classList.add('show');
+  }
+  function hideClimbTip(){ climbTip.classList.remove('show'); }
+
+  document.addEventListener('mouseover', (e)=>{
+    const hit = e.target.closest('.climb-dot-hit');
+    if(hit) showClimbTip(hit);
+  });
+  document.addEventListener('mouseout', (e)=>{
+    const hit = e.target.closest('.climb-dot-hit');
+    if(hit) hideClimbTip();
+  });
+  document.addEventListener('focusin', (e)=>{
+    const hit = e.target.closest('.climb-dot-hit');
+    if(hit) showClimbTip(hit);
+  });
+  document.addEventListener('focusout', (e)=>{
+    const hit = e.target.closest('.climb-dot-hit');
+    if(hit) hideClimbTip();
+  });
+  document.addEventListener('click', (e)=>{
+    const hit = e.target.closest('.climb-dot-hit');
+    if(hit){ e.stopPropagation(); showClimbTip(hit); }
+    else { hideClimbTip(); }
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') hideClimbTip();
+  });
+
+  // "Back to Today" — locate today's stage (or the nearest sensible anchor)
+  function getTodayTarget(){
+    const today = todaySGT();
+    if (stageDates[today]){
+      return document.querySelector('.stage-item[data-date="'+today+'"]');
+    }
+    return null; // pre-race, rest day, or post-race — no specific stage row to jump to
+  }
+
+  function expandTodayStage(){
+    const target = getTodayTarget();
+    if (target){
+      target.classList.add('open');
+      const row = target.querySelector('.stage-row');
+      if (row) row.setAttribute('aria-expanded','true');
+    }
+    return target;
+  }
+
+  function scrollToToday(){
+    const target = expandTodayStage();
+    if (target){
+      target.scrollIntoView({behavior:'smooth', block:'center'});
+    } else {
+      document.querySelector('.ribbon-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  // expand today's stage immediately — independent of scrolling/animation timing
+  expandTodayStage();
+
+  const backBtn = document.getElementById('backToTodayBtn');
+  backBtn.addEventListener('click', scrollToToday);
+
+  // show the button once the today-marker (or hero, if pre-race) scrolls out of view
+  const showAnchor = getTodayTarget() || document.querySelector('.ribbon-wrap');
+  if (showAnchor){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        backBtn.classList.toggle('show', !entry.isIntersecting);
+      });
+    }, {threshold:0});
+    io.observe(showAnchor);
+  }
+
+  // auto-scroll to today's stage on load, if the race is under way
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{
+      const target = getTodayTarget();
+      if (target) scrollToToday();
+    }, 450);
+  });
+</script>
+
+</body>
+</html>
