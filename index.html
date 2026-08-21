@@ -66,7 +66,7 @@
   .route-bar b{font-style:normal;color:var(--ink);font-weight:600;}
 
   /* ribbon + bike marker */
-  .ribbon-wrap{position:relative;margin:44px 0 8px;padding-top:34px;}
+  .ribbon-wrap{position:relative;margin:44px 0 8px;padding-top:56px;}
   .ribbon{display:flex;align-items:stretch;height:16px;border-radius:3px;overflow:hidden;gap:1.5px;}
   .ribbon .seg{min-width:2px;cursor:default;transition:opacity .15s ease;}
   .ribbon .seg:hover{opacity:.7;}
@@ -89,13 +89,17 @@
     display:flex;flex-direction:column;align-items:center;
     pointer-events:none;transition:left .25s ease;
   }
-  .bike-marker .bike-label{
-    font-family:'IBM Plex Mono',monospace;font-size:10.5px;white-space:nowrap;
-    background:var(--ink);color:var(--wall);padding:3px 8px;border-radius:10px;
-    margin-bottom:3px;letter-spacing:.02em;
+  .bike-badge{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center;}
+  .pulse-ring{
+    position:absolute;inset:0;border-radius:50%;background:var(--red);
+    opacity:.5;animation:bikePulse 2.4s ease-out infinite;
   }
-  .bike-marker svg{display:block;}
-  .bike-marker .stem{width:1.5px;height:8px;background:var(--ink);margin-top:-1px;}
+  @keyframes bikePulse{
+    0%{transform:scale(.85);opacity:.5;}
+    100%{transform:scale(1.7);opacity:0;}
+  }
+  .bike-badge svg{position:relative;z-index:1;display:block;filter:drop-shadow(0 2px 5px rgba(34,28,21,.3));}
+  .bike-marker .stem{width:2px;height:10px;background:var(--red);margin-top:-2px;}
 
   .stats{
     display:grid;grid-template-columns:repeat(5,1fr);gap:0;
@@ -310,6 +314,7 @@
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     *{transition:none !important;}
+    .pulse-ring{animation:none;opacity:.25;}
   }
 </style>
 </head>
@@ -332,14 +337,19 @@
 
   <div class="ribbon-wrap">
     <div class="bike-marker" id="bikeMarker" style="left:0">
-      <span class="bike-label" id="bikeLabel">—</span>
-      <svg width="30" height="19" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="7" cy="16" r="5.4" stroke="#221C15" stroke-width="1.8"/>
-        <circle cx="27" cy="16" r="5.4" stroke="#221C15" stroke-width="1.8"/>
-        <path d="M7 16L14 7H20M7 16L18 16L21.5 9M18 16L27 16M14 7L16.5 11" stroke="#221C15" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21.5 9H24.5M21.5 9L20 11.5" stroke="#221C15" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M14 7H11.5" stroke="#221C15" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
+      <div class="bike-badge">
+        <span class="pulse-ring" aria-hidden="true"></span>
+        <svg width="40" height="40" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="18" fill="var(--red)" stroke="var(--wall)" stroke-width="2.5"/>
+          <g transform="translate(5,11)" fill="none" stroke="var(--wall)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="7" cy="16" r="5.4"/>
+            <circle cx="27" cy="16" r="5.4"/>
+            <path d="M7 16L14 7H20M7 16L18 16L21.5 9M18 16L27 16M14 7L16.5 11"/>
+            <path d="M21.5 9H24.5M21.5 9L20 11.5"/>
+            <path d="M14 7H11.5"/>
+          </g>
+        </svg>
+      </div>
       <span class="stem"></span>
     </div>
     <div class="ribbon" id="ribbon">
@@ -937,7 +947,7 @@
 
   <footer>
     <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered; the final start list is confirmed close to the Grand Départ. Distances, climb categories and finish details may still be adjusted by race organisers before Saturday.</p>
-    <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets the start of race day (22 Aug, 12:00 AM SGT).</p>
+    <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets Stage 1's estimated first rider off (≈10:45 PM SGT, 22 Aug — converted from ≈4:45 PM CEST in Monaco).</p>
     <p>Contender notes reflect team news and 2025–26 form as reported ahead of the race, not confirmed results — the 2026 Vuelta a España has not yet started.</p>
   </footer>
 </div>
@@ -966,8 +976,9 @@
     });
   });
 
-  // countdown to race day (22 Aug 2026, 12:00 AM SGT)
-  const target = new Date('2026-08-22T00:00:00+08:00').getTime();
+  // countdown to Stage 1's estimated first rider off (Monaco, ≈16:45 CEST → 22:45 SGT)
+  // CEST (Monaco/Spain, UTC+2 in August) is 6 hours behind Singapore (UTC+8, no DST)
+  const target = new Date('2026-08-22T22:45:00+08:00').getTime();
   function tick(){
     const now = Date.now();
     let diff = Math.max(0, target - now);
@@ -994,18 +1005,20 @@
   const raceStart = '2026-08-22', raceEnd = '2026-09-13';
 
   function todaySGT(){
-    const now = new Date();
-    const sgt = new Date(now.getTime() + now.getTimezoneOffset()*60000 + 8*3600000);
-    const y = sgt.getFullYear();
-    const m = String(sgt.getMonth()+1).padStart(2,'0');
-    const d = String(sgt.getDate()).padStart(2,'0');
+    // Singapore is a fixed UTC+8 with no DST — compute directly from the UTC
+    // epoch instead of mixing in the viewer's own browser/device timezone,
+    // which was the bug (it only came out right for viewers already on SGT).
+    const nowUTCms = Date.now();
+    const sgt = new Date(nowUTCms + 8*3600000);
+    const y = sgt.getUTCFullYear();
+    const m = String(sgt.getUTCMonth()+1).padStart(2,'0');
+    const d = String(sgt.getUTCDate()).padStart(2,'0');
     return y+'-'+m+'-'+d;
   }
 
   function placeBikeMarker(){
     const ribbon = document.getElementById('ribbon');
     const marker = document.getElementById('bikeMarker');
-    const label = document.getElementById('bikeLabel');
     const today = todaySGT();
     const ribbonRect = ribbon.getBoundingClientRect();
     let x = 0, text = '';
@@ -1032,8 +1045,10 @@
       text = 'Grand Départ · Sat 22 Aug';
     }
 
-    marker.style.left = x + 'px';
-    label.textContent = text;
+    // clamp so the badge itself never spills past the ribbon's own edges
+    const badgeHalf = 20;
+    const clampedX = Math.min(Math.max(x, badgeHalf), ribbonRect.width - badgeHalf);
+    marker.style.left = clampedX + 'px';
     marker.setAttribute('title', text);
   }
 
