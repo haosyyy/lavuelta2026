@@ -258,25 +258,17 @@
   .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:14.5px;margin:10px 0 8px;}
   .rider-card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
 
-  /* jerseys + leaders */
-  .jersey-panel{
-    background:var(--panel);border:1px solid var(--line);border-radius:3px;
-    padding:20px 22px;margin-top:8px;
+  /* live results link-out */
+  .results-link{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:var(--wall);
+    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;
+    padding:12px 20px;border-radius:24px;text-decoration:none;
+    transition:background .15s ease,transform .15s ease;
   }
-  .jerseys{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;}
-  .jersey{display:flex;align-items:center;gap:12px;}
-  .avatar-sm{width:52px;height:52px;flex:none;border-radius:50%;}
-  .jersey .jl b{display:block;font-size:13.5px;}
-  .jersey .jl .role{font-size:11.5px;color:var(--ink-soft);}
-  .jersey .jl .leader{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);
-    margin-top:3px;
-  }
-  .leader-note{
-    margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line);
-    font-size:13px;color:var(--ink-soft);
-  }
-  .leader-note .eyebrow{color:var(--red-deep);}
+  .results-link:hover{background:var(--red);transform:translateY(-1px);}
+  .results-link .arrow{transition:transform .15s ease;}
+  .results-link:hover .arrow{transform:translateX(3px);}
 
   footer{
     margin-top:56px;padding:26px 0 60px;border-top:1px solid var(--line);
@@ -815,7 +807,7 @@
   </div>
 
   <h3 class="section-h">Contenders</h3>
-  <p class="section-sub">Form and headlines heading into the Grand Départ — as of 21 August 2026.</p>
+  <p class="section-sub">Form and headlines heading into the Grand Départ — as of 21 August 2026. Jonas Vingegaard, the 2025 champion, will not defend his title after breaking his collarbone at the Tour de France.</p>
   <div class="cards">
     <div class="rider-card">
       <div class="rider-head">
@@ -857,93 +849,35 @@
         <div class="rider-id"><h4>Primož Roglič</h4><div class="team">Red Bull–BORA–hansgrohe</div></div>
       </div>
       <div class="headline">Riding for a record</div>
-      <p>A four-time Vuelta champion (2019, 2020, 2021, 2024), Roglič skipped this year's Tour de France to build toward a fifth Vuelta title — which would make him the race's outright record holder, ahead of Roberto Heras.</p>
+      <p>A four-time Vuelta champion (2019, 2020, 2021, 2024), Roglič skipped this year's Tour de France to build toward a fifth title — which would make him the race's outright record holder, past Roberto Heras. At 36, and with a disrupted preparation, his form is something to watch rather than assume: his last win came at last year's Volta a Catalunya.</p>
     </div>
     <div class="rider-card">
       <div class="rider-head">
-        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in Team Visma | Lease a Bike colours">
+        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in Movistar Team colours">
         <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#1B1712"/>
-        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#F2C438"/>
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#1B1712"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#12332E"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#8FCB3E"/>
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#1B2A44"/>
         <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
         <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#1B1712"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#12332E"/>
         <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
         <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
         <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
         <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
       </svg>
-        <div class="rider-id"><h4>Jonas Vingegaard</h4><div class="team">Team Visma | Lease a Bike</div></div>
+        <div class="rider-id"><h4>Enric Mas</h4><div class="team">Movistar Team</div></div>
       </div>
-      <div class="headline">Defending champion, doubtful start</div>
-      <p>Won the 2025 Vuelta by 1:16 over João Almeida, but a broken collarbone from a crash in stage 15 of this year's Tour de France has put his participation in Spain in doubt.</p>
+      <div class="headline">Spain's nearly man, at home</div>
+      <p>Mas has finished runner-up at the Vuelta three times without ever taking the top step, and leads a Movistar team built around him on home roads. A difficult Giro d'Italia this year complicates the picture, but a fifth place at the Vuelta a Burgos suggests his form is coming back at the right time.</p>
     </div>
   </div>
 
-  <h3 class="section-h">Jerseys &amp; current leaders</h3>
-  <div class="jersey-panel">
-    <div class="jerseys">
-      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated red jersey — general classification leader's jersey">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#C11F2E"/>
-        
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#8E1420"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg><span class="jl"><b>Red</b><span class="role">General classification</span><span class="leader" id="lead-gc">Leader: —</span></span></div>
-      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated green jersey — points classification leader's jersey">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#4C7A3B"/>
-        
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#33512A"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg><span class="jl"><b>Green</b><span class="role">Points classification</span><span class="leader" id="lead-pts">Leader: —</span></span></div>
-      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated white jersey with blue polka dots — mountains classification leader's jersey">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
-        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#2B5C73"/>
-        <circle cx="24" cy="80" r="2.6" fill="#2B5C73"/><circle cx="34" cy="72" r="2.6" fill="#2B5C73"/><circle cx="44" cy="86" r="2.6" fill="#2B5C73"/><circle cx="56" cy="74" r="2.6" fill="#2B5C73"/><circle cx="64" cy="84" r="2.6" fill="#2B5C73"/><circle cx="50" cy="90" r="2.6" fill="#2B5C73"/>
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#2B5C73"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg><span class="jl"><b>Blue polka dot</b><span class="role">Mountains classification</span><span class="leader" id="lead-kom">Leader: —</span></span></div>
-      <div class="jersey"><svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated white jersey — best young rider's jersey">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
-        
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#B8AF9A"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg><span class="jl"><b>White</b><span class="role">Best young rider, under 26</span><span class="leader" id="lead-you">Leader: —</span></span></div>
-    </div>
-    <p class="leader-note"><span class="eyebrow">Note</span> — the 2026 Vuelta hasn't started yet, so there's no leader in any classification. The first red jersey will be decided by Stage 1's time trial on Saturday 22 August; this page is static and won't update automatically once racing begins, so check lavuelta.es for live standings.</p>
-  </div>
+  <h3 class="section-h">Live results</h3>
+  <p class="section-sub">This page doesn't track live stage results or jersey standings — those change by the minute once racing starts, and belong on the official site.</p>
+  <a class="results-link" href="https://www.lavuelta.es/en/" target="_blank" rel="noopener">
+    View stage results &amp; jersey rankings on lavuelta.es <span class="arrow">→</span>
+  </a>
 
   <footer>
     <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered; the final start list is confirmed close to the Grand Départ. Distances, climb categories and finish details may still be adjusted by race organisers before Saturday.</p>
@@ -1003,6 +937,7 @@
   };
   const restDates = {'2026-08-31':1,'2026-09-07':2};
   const raceStart = '2026-08-22', raceEnd = '2026-09-13';
+
 
   function todaySGT(){
     // Singapore is a fixed UTC+8 with no DST — compute directly from the UTC
