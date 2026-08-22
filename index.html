@@ -4,30 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
+<meta name="description" content="An unofficial stage-by-stage guide to the 2026 Vuelta a España — all 21 stages from Monaco to Granada, with distances, terrain, schematic climb profiles and start times in Singapore time.">
 <title>La Vuelta a España 2026</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22%20fill%3D%22%23D9556C%22/%3E%0A%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23FBF1E7%22%20stroke-width%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2223%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23FBF1E7%22%20stroke-width%3D%222%22/%3E%0A%3Cpath%20d%3D%22M9%2020L16%209H21M9%2020L19%2020L22%2012M19%2020L23%2020M16%209H13%22%20fill%3D%22none%22%20stroke%3D%22%23FBF1E7%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La Vuelta a España 2026 — stage by stage">
+<meta property="og:description" content="All 21 stages from Monaco to Granada, 22 August – 13 September 2026: distances, terrain, schematic climb profiles and start times in Singapore time.">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="La Vuelta a España 2026 — stage by stage">
+<meta name="twitter:description" content="All 21 stages from Monaco to Granada, 22 August – 13 September 2026: distances, terrain, schematic climb profiles and start times in Singapore time.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22%20fill%3D%22%23C11F2E%22/%3E%0A%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2223%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22/%3E%0A%3Cpath%20d%3D%22M9%2020L16%209H21M9%2020L19%2020L22%2012M19%2020L23%2020M16%209H13%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..600;1,9..144,500&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --wall:#FBF1E7;
-    --wall-2:#F3E1CE;
-    --panel:#FEFAF5;
-    --panel-2:#F8ECDD;
-    --ink:#5B4034;
-    --ink-soft:#8C6F5F;
-    --ink-faint:#B39A87;
-    --line:#EDD9C4;
-    --azulejo:#8FC5D6;
-    --azulejo-deep:#2F6B80;
-    --terracotta:#F0A98A;
-    --gold:#F0C878;
-    --iron:#A99A8C;
-    --red:#D9556C;
-    --red-deep:#A83E52;
-    --sage:#A8C99A;
-    --sage-deep:#6B9457;
+    --wall:#EDE9DE;
+    --wall-2:#E2DBC9;
+    --panel:#F5F1E7;
+    --panel-2:#EFE8D8;
+    --ink:#221C15;
+    --ink-soft:#544C3F;
+    --ink-faint:#6B6153;
+    --line:#D2C9B2;
+    --azulejo:#2B5C73;
+    --azulejo-deep:#1C3F52;
+    --terracotta:#BC5A34;
+    --gold:#B98A2E;
+    --iron:#544A3E;
+    --red:#C11F2E;
+    --red-deep:#8E1420;
+    /* warm red washes for today's stage — both keep body text above WCAG AA */
+    --today-wash:#F2E4DC;
+    --today-wash-2:#EDDED0;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -37,10 +46,10 @@
     color:var(--ink);
     font-family:'Libre Franklin',sans-serif;
     font-size:16px;
-    line-height:1.5;
+    line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
-  ::selection{background:var(--red-deep);color:#fff;}
+  ::selection{background:var(--red);color:#fff;}
   a{color:var(--azulejo-deep);}
   .mono{font-family:'IBM Plex Mono',monospace;}
   .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
@@ -53,8 +62,8 @@
 
   header.masthead{padding:46px 0 8px;text-align:center;}
   .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace;font-weight:500;
+    font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);
   }
   h1.title{
     font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:560;
@@ -69,9 +78,18 @@
 
   /* ribbon + bike marker */
   .ribbon-wrap{position:relative;margin:44px 0 8px;padding-top:56px;}
-  .ribbon{display:flex;align-items:stretch;height:16px;border-radius:3px;overflow:hidden;gap:1.5px;}
-  .ribbon .seg{min-width:2px;cursor:default;transition:opacity .15s ease;}
+  .ribbon{display:flex;align-items:stretch;height:16px;border-radius:3px;gap:1.5px;}
+  .ribbon .seg{
+    -webkit-appearance:none;appearance:none;
+    border:0;padding:0;margin:0;font:inherit;color:inherit;border-radius:0;
+    min-width:2px;cursor:pointer;transition:opacity .15s ease;
+  }
   .ribbon .seg:hover{opacity:.7;}
+  .ribbon .seg:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:1px;}
+  /* the ribbon no longer clips its children (so focus rings stay visible),
+     so the rounded ends live on the end segments themselves */
+  .ribbon > :first-child{border-top-left-radius:3px;border-bottom-left-radius:3px;}
+  .ribbon > :last-child{border-top-right-radius:3px;border-bottom-right-radius:3px;}
   .ribbon .rest{
     flex:0 0 9px;
     background:repeating-linear-gradient(-45deg,var(--wall) 0 3px,var(--line) 3px 6px);
@@ -83,7 +101,7 @@
   .seg-itt{background:var(--iron);}
   .ribbon-caption{
     display:flex;justify-content:space-between;
-    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12.5px;color:var(--ink-faint);
     margin-top:6px;letter-spacing:.03em;
   }
   .bike-marker{
@@ -110,13 +128,17 @@
   .stat{padding:20px 10px;text-align:center;border-left:1px solid var(--line);}
   .stat:first-child{border-left:none;}
   .stat .num{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,3.6vw,2.15rem);display:block;}
-  .stat .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);display:block;margin-top:2px;}
+  .stat .lbl{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);display:block;margin-top:3px;}
+  .stats-note{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-style:italic;
+    color:var(--ink-faint);text-align:center;margin:-18px 0 26px;line-height:1.6;
+  }
 
   .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px;}
   .filter-btn{
-    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.02em;
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13.5px;letter-spacing:.02em;
     border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);
-    padding:8px 14px;border-radius:20px;cursor:pointer;
+    padding:9px 15px;border-radius:20px;cursor:pointer;
     display:inline-flex;align-items:center;gap:7px;transition:all .15s ease;
   }
   .filter-btn .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
@@ -131,7 +153,7 @@
   }
   .callout .info .eyebrow{color:var(--red-deep);}
   .callout h2{font-family:'Fraunces',serif;font-weight:560;font-size:1.55rem;margin:.15em 0 .3em;}
-  .callout p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:46ch;}
+  .callout p{margin:0;color:var(--ink-soft);font-size:15.5px;line-height:1.6;max-width:46ch;}
   .countdown{display:flex;gap:14px;}
   .countdown .cell{text-align:center;}
   .countdown .cell .n{
@@ -139,10 +161,12 @@
     background:var(--ink);color:var(--wall);padding:8px 4px;border-radius:4px;
     min-width:52px;display:block;
   }
-  .countdown .cell .u{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);display:block;margin-top:4px;}
+  .countdown .cell .u{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);display:block;margin-top:5px;}
+  .countdown .cell .n.wide{font-size:1.25rem;padding:13px 10px;letter-spacing:.02em;}
+  .countdown:empty{display:none;}
 
   h3.section-h{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.35rem,2.6vw,1.7rem);margin:52px 0 6px;}
-  .section-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;max-width:62ch;}
+  .section-sub{color:var(--ink-soft);font-size:15.5px;line-height:1.6;margin:0 0 20px;max-width:64ch;}
 
   /* stage accordion */
   .stage-list{border-top:1px solid var(--line);}
@@ -151,7 +175,7 @@
     all:unset;box-sizing:border-box;cursor:pointer;
     display:grid;grid-template-columns:44px 108px 1fr 84px 110px 18px;
     gap:14px;align-items:center;width:100%;
-    padding:13px 10px 13px 14px;border-left:4px solid transparent;font-size:14px;
+    padding:15px 10px 15px 14px;border-left:4px solid transparent;font-size:15.5px;
   }
   .stage-item[data-terrain="flat"] .stage-row{border-left-color:var(--gold);}
   .stage-item[data-terrain="hilly"] .stage-row{border-left-color:var(--terracotta);}
@@ -159,12 +183,12 @@
   .stage-item[data-terrain="itt"] .stage-row{border-left-color:var(--iron);}
   .stage-item.hidden{display:none;}
   .stage-row:focus-visible{outline:2px solid var(--red);outline-offset:-2px;}
-  .stage-row .n{font-family:'IBM Plex Mono',monospace;color:var(--ink-faint);font-size:13px;}
-  .stage-row .date{font-family:'IBM Plex Mono',monospace;color:var(--ink-soft);font-size:12.5px;}
+  .stage-row .n{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--ink-faint);font-size:14px;}
+  .stage-row .date{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--ink-soft);font-size:13.5px;}
   .stage-row .route strong{font-weight:600;}
-  .stage-row .route .note{display:block;color:var(--ink-soft);font-size:12.5px;margin-top:2px;}
-  .stage-row .dist{font-family:'IBM Plex Mono',monospace;text-align:right;font-size:13.5px;}
-  .stage-row .terrain{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;text-align:right;color:var(--ink-soft);}
+  .stage-row .route .note{display:block;color:var(--ink-soft);font-size:13.5px;line-height:1.5;margin-top:3px;}
+  .stage-row .dist{font-family:'IBM Plex Mono',monospace;font-weight:500;text-align:right;font-size:14.5px;}
+  .stage-row .terrain{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;text-align:right;color:var(--ink-soft);}
   .stage-row .chev{
     color:var(--ink-faint);font-size:12px;transition:transform .2s ease;
     display:inline-block;justify-self:end;
@@ -172,32 +196,52 @@
   .stage-item.open .stage-row .chev{transform:rotate(90deg);color:var(--ink);}
   .stage-item.open .stage-row{background:var(--panel-2);}
 
+  /* today's stage */
+  .stage-item.is-today .stage-row{
+    background:var(--today-wash);
+    box-shadow:inset 0 0 0 1px rgba(193,31,46,.28);
+  }
+  .stage-item.is-today .stage-row .n{color:var(--red-deep);font-weight:600;}
+  .stage-item.is-today .stage-row .date{color:var(--red-deep);}
+  .stage-item.is-today .detail-inner{background:var(--today-wash-2);}
+  .today-badge{
+    display:inline-block;margin-left:9px;transform:translateY(-1px);
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10.5px;
+    text-transform:uppercase;letter-spacing:.09em;
+    background:var(--red);color:#fff;padding:3px 9px;border-radius:20px;
+    white-space:nowrap;
+  }
+  .rest-row.is-today{
+    color:var(--red-deep);font-style:normal;
+    background:repeating-linear-gradient(-45deg,var(--today-wash) 0 5px,var(--today-wash-2) 5px 10px);
+  }
+
   .stage-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease;}
   .stage-item.open .stage-detail{grid-template-rows:1fr;}
   .stage-detail > div{overflow:hidden;}
   .detail-inner{
-    padding:4px 14px 20px 18px;
+    padding:6px 14px 22px 18px;
     background:var(--panel-2);
-    font-size:13.3px;color:var(--ink-soft);
+    font-size:14.5px;line-height:1.6;color:var(--ink-soft);
   }
   .detail-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-    gap:14px 22px;margin-top:6px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+    gap:16px 26px;margin-top:8px;
   }
   .detail-block .dl{
-    font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;
-    letter-spacing:.06em;color:var(--ink-faint);margin-bottom:4px;
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--ink-faint);margin-bottom:5px;
   }
-  .detail-block .dv{color:var(--ink);font-size:13.6px;line-height:1.5;}
-  .detail-block .dv.mono{font-family:'IBM Plex Mono',monospace;font-size:12.8px;}
+  .detail-block .dv{color:var(--ink);font-size:15px;line-height:1.55;}
+  .detail-block .dv.mono{font-family:'IBM Plex Mono',monospace;font-size:13.8px;}
   .rest-row{
-    padding:9px 14px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-style:italic;
+    padding:11px 14px;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13.5px;font-style:italic;
     color:var(--ink-faint);
     background:repeating-linear-gradient(-45deg,var(--wall) 0 5px,var(--wall-2) 5px 10px);
     border-bottom:1px solid var(--line);
   }
   .time-note{
-    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+    font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.65;color:var(--ink-faint);
     margin:14px 0 0;font-style:italic;
   }
 
@@ -205,24 +249,25 @@
   .profile-chart{width:100%;height:52px;margin-top:4px;}
   .profile-chart svg{display:block;width:100%;height:100%;}
   .profile-note{
-    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);
-    font-style:italic;margin-top:4px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+    font-style:italic;margin-top:5px;
   }
   .climb-dot-hit{cursor:pointer;}
   .climb-dot-hit:focus-visible{outline:2px solid var(--red);outline-offset:1px;border-radius:50%;}
   .climb-tooltip{
-    position:fixed;z-index:120;max-width:220px;
+    position:fixed;z-index:120;max-width:min(220px,calc(100vw - 32px));
     background:var(--ink);color:var(--wall);
     padding:10px 13px;border-radius:6px;
-    font-family:'Libre Franklin',sans-serif;font-size:12.5px;line-height:1.45;
+    font-family:'Libre Franklin',sans-serif;font-size:13.5px;line-height:1.5;
     box-shadow:0 6px 18px rgba(34,28,21,.28);
     opacity:0;transform:translate(-50%,-100%);
     pointer-events:none;transition:opacity .12s ease;
   }
   .climb-tooltip.show{opacity:1;}
+  .climb-tooltip.below{transform:translate(-50%,0);}
   .climb-tooltip .ct-name{display:block;font-weight:600;margin-bottom:2px;}
   .climb-tooltip .ct-cat{
-    display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;
+    display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;
     text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin-bottom:5px;
   }
 
@@ -237,7 +282,7 @@
     transition:opacity .2s ease,transform .2s ease,background .15s ease;
   }
   .back-today.show{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .back-today:hover{background:var(--red-deep);border-color:var(--red-deep);}
+  .back-today:hover{background:var(--red);border-color:var(--red);}
   .back-today:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   .back-today .arrow{display:inline-block;transform:translateY(-1px);}
   @media (max-width:640px){
@@ -246,52 +291,48 @@
 
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px;}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:18px 18px 20px;}
-  .card .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--azulejo-deep);}
+  .card .tag{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--azulejo-deep);}
   .card h4{font-family:'Fraunces',serif;font-weight:560;font-size:1.15rem;margin:.3em 0 .4em;}
-  .card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
-  .card .stat-line{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);margin-top:10px;}
+  .card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0;}
+  .card .stat-line{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;color:var(--ink-faint);margin-top:11px;}
 
   .rider-card{background:var(--panel);border-radius:3px;padding:18px 20px;border-top:3px solid var(--red);}
   .rider-head{display:flex;align-items:center;gap:14px;margin-bottom:4px;}
   .avatar{width:64px;height:64px;flex:none;border-radius:50%;}
   .rider-id{min-width:0;}
   .rider-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:1.2rem;margin:0 0 2px;}
-  .rider-card .team{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;}
-  .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:14.5px;margin:10px 0 8px;}
-  .rider-card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
-
-  /* current leaders (hand-updated) */
-  .leaders-panel{
-    background:var(--panel);border:1px solid var(--line);border-radius:3px;
-    padding:20px 22px;margin-top:8px;
-  }
-  .leaders-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
-  .leader-card{display:flex;align-items:center;gap:14px;}
-  .avatar-sm{width:52px;height:52px;flex:none;border-radius:50%;}
-  .leader-card .jl b{display:block;font-size:12px;color:var(--ink-soft);font-weight:600;}
-  .leader-card .jl .rider{display:block;font-size:14.5px;font-weight:600;margin-top:3px;}
-  .leader-card .jl .detail{display:block;font-size:11.5px;color:var(--ink-faint);margin-top:1px;}
-  .leaders-updated{
-    margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line);
-    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
-  }
-  .leaders-updated a{color:var(--azulejo-deep);}
+  .rider-card .team{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;}
+  .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:15.5px;margin:11px 0 9px;}
+  .rider-card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0;}
 
   /* live results link-out */
   .results-link{
     display:inline-flex;align-items:center;gap:8px;
     background:var(--ink);color:var(--wall);
-    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;
-    padding:12px 20px;border-radius:24px;text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13.5px;letter-spacing:.02em;
+    padding:13px 21px;border-radius:24px;text-decoration:none;
     transition:background .15s ease,transform .15s ease;
   }
-  .results-link:hover{background:var(--red-deep);transform:translateY(-1px);}
+  .results-link:hover{background:var(--red);transform:translateY(-1px);}
   .results-link .arrow{transition:transform .15s ease;}
   .results-link:hover .arrow{transform:translateX(3px);}
 
+  .jump-today{
+    display:none;margin-top:15px;align-items:center;gap:8px;
+    background:var(--red);color:#fff;border:0;
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13.5px;letter-spacing:.02em;
+    padding:11px 19px;border-radius:24px;cursor:pointer;
+    transition:background .15s ease,transform .15s ease;
+  }
+  .jump-today.show{display:inline-flex;}
+  .jump-today:hover{background:var(--red-deep);transform:translateY(-1px);}
+  .jump-today:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+  .jump-today .arrow{transition:transform .15s ease;}
+  .jump-today:hover .arrow{transform:translateY(2px);}
+
   footer{
     margin-top:56px;padding:26px 0 60px;border-top:1px solid var(--line);
-    font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.7;color:var(--ink-faint);
+    font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.8;color:var(--ink-faint);
   }
   footer p{margin:0 0 10px;}
 
@@ -331,6 +372,18 @@
 </head>
 <body>
 
+<noscript>
+  <!-- The ribbon, profiles, countdown and accordion are all script-driven.
+       Without JS, fall back to a plain, fully readable stage list rather than
+       leaving the details permanently collapsed. -->
+  <style>
+    .ribbon-wrap,.filters,.countdown,.back-today,.profile-block{display:none;}
+    .stage-detail{grid-template-rows:1fr;}
+    .stage-row{cursor:default;}
+    .stage-row .chev{display:none;}
+  </style>
+</noscript>
+
 <button class="back-today" id="backToTodayBtn" type="button" title="Scroll to today's stage">
   <span class="arrow">↑</span> Back to Today
 </button>
@@ -363,66 +416,43 @@
       </div>
       <span class="stem"></span>
     </div>
-    <div class="ribbon" id="ribbon">
-      <div class="seg seg-itt" data-stage="1" style="flex-grow:9.4" title="Stage 1 · Monaco–Monaco · 9.4km ITT"></div>
-      <div class="seg seg-hilly" data-stage="2" style="flex-grow:215.2" title="Stage 2 · Monaco–Manosque · 215.2km"></div>
-      <div class="seg seg-mountains" data-stage="3" style="flex-grow:166.7" title="Stage 3 · Gruissan–Font Romeu · 166.7km"></div>
-      <div class="seg seg-mountains" data-stage="4" style="flex-grow:104.9" title="Stage 4 · Andorra la Vella–Andorra la Vella · 104.9km"></div>
-      <div class="seg seg-hilly" data-stage="5" style="flex-grow:171.1" title="Stage 5 · Falset–Roquetes · 171.1km"></div>
-      <div class="seg seg-mountains" data-stage="6" style="flex-grow:176.8" title="Stage 6 · Alcossebre–Castelló · 176.8km"></div>
-      <div class="seg seg-mountains" data-stage="7" style="flex-grow:149.9" title="Stage 7 · Vall d'Alba–Aramón Valdelinares · 149.9km"></div>
-      <div class="seg seg-flat" data-stage="8" style="flex-grow:176.4" title="Stage 8 · Puçol–Xeraco · 176.4km"></div>
-      <div class="seg seg-mountains" data-stage="9" style="flex-grow:187.5" title="Stage 9 · La Vila Joiosa–Alto de Aitana · 187.5km"></div>
-      <div class="rest" data-rest="1" title="Rest day · Monday 31 August"></div>
-      <div class="seg seg-hilly" data-stage="10" style="flex-grow:184.5" title="Stage 10 · Alcaraz–Elche de la Sierra · 184.5km"></div>
-      <div class="seg seg-flat" data-stage="11" style="flex-grow:156.1" title="Stage 11 · Cartagena–Lorca · 156.1km"></div>
-      <div class="seg seg-mountains" data-stage="12" style="flex-grow:166.5" title="Stage 12 · Vera–Calar Alto · 166.5km"></div>
-      <div class="seg seg-mountains" data-stage="13" style="flex-grow:193.2" title="Stage 13 · Almuñécar–Loja · 193.2km"></div>
-      <div class="seg seg-mountains" data-stage="14" style="flex-grow:152.7" title="Stage 14 · Jaén–Sierra de la Pandera · 152.7km"></div>
-      <div class="seg seg-mountains" data-stage="15" style="flex-grow:181.2" title="Stage 15 · Palma del Río–Córdoba · 181.2km"></div>
-      <div class="rest" data-rest="2" title="Rest day · Monday 7 September"></div>
-      <div class="seg seg-flat" data-stage="16" style="flex-grow:186" title="Stage 16 · Cortegana–La Rábida · 186km"></div>
-      <div class="seg seg-flat" data-stage="17" style="flex-grow:189.2" title="Stage 17 · Dos Hermanas–Sevilla · 189.2km"></div>
-      <div class="seg seg-itt" data-stage="18" style="flex-grow:32.5" title="Stage 18 · El Puerto de Santa María–Jerez · 32.5km ITT"></div>
-      <div class="seg seg-hilly" data-stage="19" style="flex-grow:205.1" title="Stage 19 · Vélez-Málaga–Peñas Blancas · 205.1km"></div>
-      <div class="seg seg-mountains" data-stage="20" style="flex-grow:187" title="Stage 20 · La Calahorra–Collado del Alguacil · 187km"></div>
-      <div class="seg seg-hilly" data-stage="21" style="flex-grow:99.4" title="Stage 21 · Carrefour Granada–Granada · 99.4km"></div>
-    </div>
+    <div class="ribbon" id="ribbon" role="group" aria-label="Stage distance ribbon — segment width is proportional to stage distance"></div>
     <div class="ribbon-caption"><span>Stage 1 · Monaco</span><span>Stage 21 · Granada</span></div>
   </div>
 
-  <div class="stats">
-    <div class="stat"><span class="num mono">21</span><span class="lbl">Stages</span></div>
-    <div class="stat"><span class="num mono">3,275 km</span><span class="lbl">Total distance</span></div>
-    <div class="stat"><span class="num mono">10</span><span class="lbl">Mountain stages</span></div>
-    <div class="stat"><span class="num mono">2</span><span class="lbl">Time trials</span></div>
-    <div class="stat"><span class="num mono">2</span><span class="lbl">Rest days</span></div>
+  <div class="stats" id="stats">
+    <div class="stat"><span class="num mono" data-stat="stages">21</span><span class="lbl">Stages</span></div>
+    <div class="stat"><span class="num mono" data-stat="distance">3,291 km</span><span class="lbl">Total distance</span></div>
+    <div class="stat"><span class="num mono" data-stat="mountains">10</span><span class="lbl">Mountain stages</span></div>
+    <div class="stat"><span class="num mono" data-stat="itt">2</span><span class="lbl">Time trials</span></div>
+    <div class="stat"><span class="num mono" data-stat="rest">2</span><span class="lbl">Rest days</span></div>
+  </div>
+  <p class="stats-note">Total is the sum of the 21 published stage distances; the organisers' headline figure for the route is 3,275 km.</p>
+
+  <div class="filters" id="filters" role="group" aria-label="Filter stages by terrain">
+    <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All <span data-count="all">21</span></button>
+    <button class="filter-btn" type="button" data-filter="flat" aria-pressed="false"><span class="dot" style="background:var(--gold)"></span>Flat · <span data-count="flat">4</span></button>
+    <button class="filter-btn" type="button" data-filter="hilly" aria-pressed="false"><span class="dot" style="background:var(--terracotta)"></span>Hilly · <span data-count="hilly">5</span></button>
+    <button class="filter-btn" type="button" data-filter="mountains" aria-pressed="false"><span class="dot" style="background:var(--azulejo)"></span>Mountains · <span data-count="mountains">10</span></button>
+    <button class="filter-btn" type="button" data-filter="itt" aria-pressed="false"><span class="dot" style="background:var(--iron)"></span>Time trial · <span data-count="itt">2</span></button>
   </div>
 
-  <div class="filters" id="filters">
-    <button class="filter-btn active" data-filter="all">All 21</button>
-    <button class="filter-btn" data-filter="flat"><span class="dot" style="background:var(--gold)"></span>Flat · 4</button>
-    <button class="filter-btn" data-filter="hilly"><span class="dot" style="background:var(--terracotta)"></span>Hilly · 5</button>
-    <button class="filter-btn" data-filter="mountains"><span class="dot" style="background:var(--azulejo)"></span>Mountains · 10</button>
-    <button class="filter-btn" data-filter="itt"><span class="dot" style="background:var(--iron)"></span>Time trial · 2</button>
-  </div>
-
-  <div class="callout">
+  <div class="callout" id="callout">
+    <!-- only the prose is a live region: the countdown next to it changes every
+         second, and announcing that would be unusable with a screen reader -->
     <div class="info">
-      <div class="eyebrow">Grand Départ</div>
-      <h2>Monaco, Saturday 22 August</h2>
-      <p>Stage 1 is a short, technical individual time trial through the streets of Monte Carlo — 9.4km to decide the first red jersey of the 81st Vuelta a España.</p>
+      <div aria-live="polite">
+        <div class="eyebrow" id="calloutEyebrow">Grand Départ</div>
+        <h2 id="calloutTitle">Monaco, Saturday 22 August</h2>
+        <p id="calloutText">Stage 1 is a short, technical individual time trial through the streets of Monte Carlo — 9.4km to decide the first red jersey of the 81st Vuelta a España.</p>
+      </div>
+      <button class="jump-today" id="jumpTodayBtn" type="button">Jump to today's stage <span class="arrow" aria-hidden="true">↓</span></button>
     </div>
-    <div class="countdown mono" id="countdown">
-      <div class="cell"><span class="n" id="cd-d">–</span><span class="u">Days</span></div>
-      <div class="cell"><span class="n" id="cd-h">–</span><span class="u">Hrs</span></div>
-      <div class="cell"><span class="n" id="cd-m">–</span><span class="u">Min</span></div>
-      <div class="cell"><span class="n" id="cd-s">–</span><span class="u">Sec</span></div>
-    </div>
+    <div class="countdown mono" id="countdown"></div>
   </div>
 
   <h3 class="section-h">Stage by stage</h3>
-  <p class="section-sub">All 21 stages, start to finish. Filter by terrain above, tap a stage to open its profile, categorised climbs and estimated timing. On each climb profile, dot size marks climb category — Cat.3 (smallest) through Cat.1, with Categoría Especial (red, largest) reserved for Stage 20's summit finish.</p>
+  <p class="section-sub">All 21 stages, start to finish. Filter by terrain above, tap a stage to open its profile, categorised climbs and estimated timing. On each climb profile, dot size marks climb category — Cat.3 (smallest) through Cat.1, with Categoría Especial (red, largest) reserved for Stage 20's summit finish. Hollow dots mark a named climb whose category the organisers haven't confirmed yet; stages with no dots have no categorised climbs at all.</p>
 
   <div class="stage-list" id="stageList">
 
@@ -579,7 +609,7 @@
       </div></div></div>
     </div>
 
-    <div class="rest-row">Rest day — Monday 31 August</div>
+    <div class="rest-row" data-rest="1" data-date="2026-08-31">Rest day — Monday 31 August</div>
 
     <div class="stage-item" data-terrain="hilly" data-date="2026-09-01">
       <button class="stage-row" aria-expanded="false" aria-controls="d10">
@@ -683,7 +713,7 @@
       </div></div></div>
     </div>
 
-    <div class="rest-row">Rest day — Monday 7 September</div>
+    <div class="rest-row" data-rest="2" data-date="2026-09-07">Rest day — Monday 7 September</div>
 
     <div class="stage-item" data-terrain="flat" data-date="2026-09-08">
       <button class="stage-row" aria-expanded="false" aria-controls="d16">
@@ -892,82 +922,6 @@
     </div>
   </div>
 
-  <h3 class="section-h">Current leaders</h3>
-  <p class="section-sub">Filled in by hand after checking lavuelta.es — ask for an update any day and I'll refresh it.</p>
-  <div class="leaders-panel">
-    <div class="leaders-grid">
-      <div class="leader-card">
-        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red jersey — general classification leader">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="var(--red)"/>
-        
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="var(--red-deep)"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="jl"><b>Red — General classification</b><span class="rider" id="leader-gc">Not yet decided</span><span class="detail" id="leader-gc-detail">Stage 1's time trial is still underway</span></div>
-      </div>
-      <div class="leader-card">
-        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Green jersey — points classification leader">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="var(--sage)"/>
-        
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="var(--sage-deep)"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="jl"><b>Green — Points</b><span class="rider" id="leader-pts">Not yet decided</span><span class="detail" id="leader-pts-detail">Stage 1's time trial is still underway</span></div>
-      </div>
-      <div class="leader-card">
-        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White jersey with blue polka dots — mountains classification leader">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
-        
-        <circle cx="24" cy="80" r="2.6" fill="var(--azulejo)"/><circle cx="34" cy="72" r="2.6" fill="var(--azulejo)"/><circle cx="44" cy="86" r="2.6" fill="var(--azulejo)"/><circle cx="56" cy="74" r="2.6" fill="var(--azulejo)"/><circle cx="64" cy="84" r="2.6" fill="var(--azulejo)"/><circle cx="50" cy="90" r="2.6" fill="var(--azulejo)"/>
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="var(--azulejo-deep)"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="jl"><b>Blue polka dot — Mountains</b><span class="rider" id="leader-kom">Not yet decided</span><span class="detail" id="leader-kom-detail">No categorised climbs on Stage 1</span></div>
-      </div>
-      <div class="leader-card">
-        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White jersey — best young rider classification leader">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
-        
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#B8AF9A"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="jl"><b>White — Best young rider</b><span class="rider" id="leader-you">Not yet decided</span><span class="detail" id="leader-you-detail">Stage 1's time trial is still underway</span></div>
-      </div>
-    </div>
-    <p class="leaders-updated" id="leadersUpdated">Last updated: 22 Aug 2026, before Stage 1 results — <a href="https://www.lavuelta.es/en/rankings" target="_blank" rel="noopener">lavuelta.es</a></p>
-  </div>
-
   <h3 class="section-h">Live results</h3>
   <p class="section-sub">This page doesn't track live stage results or jersey standings — those change by the minute once racing starts, and belong on the official site.</p>
   <a class="results-link" href="https://www.lavuelta.es/en/rankings" target="_blank" rel="noopener">
@@ -982,70 +936,273 @@
 </div>
 
 <script>
-  // terrain filter
-  const buttons = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.stage-item');
-  buttons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      buttons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      items.forEach(it=>{
-        it.classList.toggle('hidden', f!=='all' && it.dataset.terrain!==f);
-      });
-    });
+  /* ------------------------------------------------------------------ *
+   * Stage data has a single source of truth: the .stage-item markup in
+   * #stageList. The ribbon, the summary stats, the filter counts and the
+   * date lookups below are all derived from it, so a stage can be edited
+   * in exactly one place without the page drifting out of sync.
+   * ------------------------------------------------------------------ */
+
+  const stageList = document.getElementById('stageList');
+
+  const STAGES = Array.from(stageList.querySelectorAll('.stage-item')).map(el=>{
+    const routeEl = el.querySelector('.route');
+    const route = routeEl.querySelector('strong').textContent.trim();
+    const noteEl = routeEl.querySelector('.note');
+    const parts = route.split('→').map(s=>s.trim());
+    return {
+      el,
+      n: parseInt(el.querySelector('.n').textContent, 10),
+      date: el.dataset.date,
+      dateLabel: el.querySelector('.date').textContent.trim(),
+      terrain: el.dataset.terrain,
+      terrainLabel: el.querySelector('.terrain').textContent.trim(),
+      route,
+      start: parts[0],
+      finish: parts[parts.length-1],
+      note: noteEl ? noteEl.textContent.trim() : '',
+      dist: parseFloat(el.querySelector('.dist').textContent)
+    };
   });
 
-  // accordion toggles
+  const RESTS = Array.from(stageList.querySelectorAll('.rest-row')).map(el=>({
+    el,
+    n: parseInt(el.dataset.rest, 10),
+    date: el.dataset.date,
+    label: el.textContent.trim()
+  }));
+
+  const stageByN    = Object.fromEntries(STAGES.map(s=>[s.n, s]));
+  const stageDates  = Object.fromEntries(STAGES.map(s=>[s.date, s.n]));
+  const restDates   = Object.fromEntries(RESTS.map(r=>[r.date, r.n]));
+  const raceStart   = STAGES[0].date;
+  const raceEnd     = STAGES[STAGES.length-1].date;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const scrollBehavior = ()=> reduceMotion.matches ? 'auto' : 'smooth';
+
+  // ---------- ribbon, built from the stage data ----------
+  function buildRibbon(){
+    const ribbon = document.getElementById('ribbon');
+    const frag = document.createDocumentFragment();
+    // walk #stageList in document order so rest days land between the right stages
+    Array.from(stageList.children).forEach(child=>{
+      if (child.classList.contains('stage-item')){
+        const s = STAGES.find(st=>st.el===child);
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'seg seg-'+s.terrain+' tip-target';
+        b.dataset.stage = s.n;
+        b.style.flexGrow = s.dist;
+        b.dataset.tipName = 'Stage '+s.n+' · '+s.route;
+        b.dataset.tipKicker = s.dist+' km · '+s.terrainLabel;
+        b.dataset.tipBody = s.note;
+        b.setAttribute('aria-label',
+          'Stage '+s.n+', '+s.dateLabel+', '+s.route+', '+s.dist+' kilometres, '+s.terrainLabel+'. Jump to this stage.');
+        frag.appendChild(b);
+      } else if (child.classList.contains('rest-row')){
+        const r = RESTS.find(rr=>rr.el===child);
+        const d = document.createElement('div');
+        d.className = 'rest';
+        d.dataset.rest = r.n;
+        d.title = r.label;
+        frag.appendChild(d);
+      }
+    });
+    ribbon.replaceChildren(frag);
+  }
+  buildRibbon();
+
+  // ---------- summary stats and filter counts, derived ----------
+  function renderStats(){
+    const totalKm = STAGES.reduce((a,s)=>a+s.dist, 0);
+    const counts = STAGES.reduce((acc,s)=>{ acc[s.terrain]=(acc[s.terrain]||0)+1; return acc; }, {});
+    const set = (key,val)=>{
+      const el = document.querySelector('[data-stat="'+key+'"]');
+      if (el) el.textContent = val;
+    };
+    set('stages', STAGES.length);
+    set('distance', Math.round(totalKm).toLocaleString('en-GB')+' km');
+    set('mountains', counts.mountains||0);
+    set('itt', counts.itt||0);
+    set('rest', RESTS.length);
+
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const k = el.dataset.count;
+      el.textContent = k==='all' ? STAGES.length : (counts[k]||0);
+    });
+  }
+  renderStats();
+
+  // ---------- mark today's stage in the running order ----------
+  function markToday(){
+    const today = todaySGT();
+    STAGES.forEach(s=>{
+      const isToday = s.date === today;
+      s.el.classList.toggle('is-today', isToday);
+      const routeEl = s.el.querySelector('.route');
+      let badge = routeEl.querySelector('.today-badge');
+      if (isToday && !badge){
+        badge = document.createElement('span');
+        badge.className = 'today-badge';
+        badge.textContent = 'Today';
+        routeEl.querySelector('strong').insertAdjacentElement('afterend', badge);
+      } else if (!isToday && badge){
+        badge.remove();
+      }
+    });
+    RESTS.forEach(r=>r.el.classList.toggle('is-today', r.date === today));
+  }
+
+  // ---------- accordion open/close (inert keeps collapsed panels out of the tab order) ----------
+  function setStageOpen(item, open){
+    item.classList.toggle('open', open);
+    const row = item.querySelector('.stage-row');
+    if (row) row.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const detail = item.querySelector('.stage-detail');
+    if (detail) detail.inert = !open;
+  }
+
+  document.querySelectorAll('.stage-item').forEach(item=>{
+    setStageOpen(item, item.classList.contains('open'));
+  });
+
   document.querySelectorAll('.stage-row').forEach(row=>{
     row.addEventListener('click', ()=>{
       const item = row.closest('.stage-item');
-      const open = item.classList.toggle('open');
-      row.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setStageOpen(item, !item.classList.contains('open'));
     });
   });
 
-  // countdown to Stage 1's estimated first rider off (Monaco, ≈16:45 CEST → 22:45 SGT)
-  // CEST (Monaco/Spain, UTC+2 in August) is 6 hours behind Singapore (UTC+8, no DST)
-  const target = new Date('2026-08-22T22:45:00+08:00').getTime();
-  function tick(){
-    const now = Date.now();
-    let diff = Math.max(0, target - now);
-    const d = Math.floor(diff/86400000); diff -= d*86400000;
-    const h = Math.floor(diff/3600000); diff -= h*3600000;
-    const m = Math.floor(diff/60000); diff -= m*60000;
-    const s = Math.floor(diff/1000);
-    document.getElementById('cd-d').textContent = d;
-    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  // ---------- terrain filter (rest days follow the filter too) ----------
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  function applyFilter(f){
+    filterButtons.forEach(b=>{
+      const on = b.dataset.filter===f;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    STAGES.forEach(s=>{
+      s.el.classList.toggle('hidden', f!=='all' && s.terrain!==f);
+    });
+    // a rest day only makes sense alongside the full running order
+    RESTS.forEach(r=>{
+      r.el.classList.toggle('hidden', f!=='all');
+    });
   }
-  tick();
-  setInterval(tick,1000);
+  filterButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>applyFilter(btn.dataset.filter));
+  });
 
-  // bike marker — position on the ribbon for "today" in Singapore time
-  const stageDates = {
-    '2026-08-22':1,'2026-08-23':2,'2026-08-24':3,'2026-08-25':4,'2026-08-26':5,
-    '2026-08-27':6,'2026-08-28':7,'2026-08-29':8,'2026-08-30':9,
-    '2026-09-01':10,'2026-09-02':11,'2026-09-03':12,'2026-09-04':13,'2026-09-05':14,'2026-09-06':15,
-    '2026-09-08':16,'2026-09-09':17,'2026-09-10':18,'2026-09-11':19,'2026-09-12':20,'2026-09-13':21
-  };
-  const restDates = {'2026-08-31':1,'2026-09-07':2};
-  const raceStart = '2026-08-22', raceEnd = '2026-09-13';
-
-
+  // ---------- "today" in Singapore time ----------
   function todaySGT(){
     // Singapore is a fixed UTC+8 with no DST — compute directly from the UTC
     // epoch instead of mixing in the viewer's own browser/device timezone,
     // which was the bug (it only came out right for viewers already on SGT).
-    const nowUTCms = Date.now();
-    const sgt = new Date(nowUTCms + 8*3600000);
+    const sgt = new Date(Date.now() + 8*3600000);
     const y = sgt.getUTCFullYear();
     const m = String(sgt.getUTCMonth()+1).padStart(2,'0');
     const d = String(sgt.getUTCDate()).padStart(2,'0');
     return y+'-'+m+'-'+d;
   }
 
+  // ---------- countdown / live callout ----------
+  // Stage 1's estimated first rider off (Monaco, ~16:45 CEST -> 22:45 SGT).
+  const target = new Date('2026-08-22T22:45:00+08:00').getTime();
+
+  const cdEl      = document.getElementById('countdown');
+  const eyebrowEl = document.getElementById('calloutEyebrow');
+  const titleEl   = document.getElementById('calloutTitle');
+  const textEl    = document.getElementById('calloutText');
+
+  function raceState(){
+    const today = todaySGT();
+    if (Date.now() < target) return {kind:'pre'};
+    if (today > raceEnd) return {kind:'done'};
+    if (stageDates[today]) return {kind:'stage', n:stageDates[today]};
+    if (restDates[today]) return {kind:'rest', n:restDates[today]};
+    return {kind:'done'};
+  }
+
+  function cell(value, unit, wide){
+    const c = document.createElement('div');
+    c.className = 'cell';
+    const n = document.createElement('span');
+    n.className = wide ? 'n wide' : 'n';
+    n.textContent = value;
+    const u = document.createElement('span');
+    u.className = 'u';
+    u.textContent = unit;
+    c.append(n, u);
+    return c;
+  }
+
+  const jumpBtn = document.getElementById('jumpTodayBtn');
+
+  let renderedState = '';
+  function renderCallout(state){
+    const key = state.kind + (state.n || '');
+    if (key === renderedState) return;
+    renderedState = key;
+    cdEl.replaceChildren();
+    markToday();
+    // offer the jump whenever a stage is on today — including race morning,
+    // while the countdown to the first rider off is still running
+    jumpBtn.classList.toggle('show', !!stageDates[todaySGT()]);
+
+    if (state.kind === 'pre'){
+      eyebrowEl.textContent = 'Grand Départ';
+      titleEl.textContent = 'Monaco, Saturday 22 August';
+      textEl.textContent = 'Stage 1 is a short, technical individual time trial through the streets of Monte Carlo — 9.4km to decide the first red jersey of the 81st Vuelta a España.';
+      cdEl.append(cell('–','Days'), cell('–','Hrs'), cell('–','Min'), cell('–','Sec'));
+      return;
+    }
+
+    if (state.kind === 'stage'){
+      const s = stageByN[state.n];
+      eyebrowEl.textContent = 'Racing today · Stage '+s.n+' of '+STAGES.length;
+      titleEl.textContent = s.route;
+      textEl.textContent = s.note ? s.note+'.' : '';
+      cdEl.append(cell(s.n, 'Stage'), cell(s.dist, 'km'), cell(s.terrainLabel, 'Terrain', true));
+      return;
+    }
+
+    if (state.kind === 'rest'){
+      const next = STAGES.find(s=>s.date > todaySGT());
+      eyebrowEl.textContent = 'Rest day';
+      titleEl.textContent = 'Rest day '+state.n+' of '+RESTS.length;
+      textEl.textContent = 'No racing today. The peloton is back out tomorrow'+(next ? ' for stage '+next.n+', '+next.route+'.' : '.');
+      if (next) cdEl.append(cell(next.n,'Next stage'), cell(next.dist,'km'));
+      return;
+    }
+
+    const last = STAGES[STAGES.length-1];
+    eyebrowEl.textContent = 'Race finished';
+    titleEl.textContent = last.finish+', '+last.dateLabel;
+    textEl.textContent = 'The 81st Vuelta a España is over. Final general, points and mountains classifications are on lavuelta.es.';
+  }
+
+  function tick(){
+    const state = raceState();
+    renderCallout(state);
+    if (state.kind !== 'pre') return;
+    let diff = Math.max(0, target - Date.now());
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const h = Math.floor(diff/3600000); diff -= h*3600000;
+    const m = Math.floor(diff/60000);   diff -= m*60000;
+    const s = Math.floor(diff/1000);
+    const cells = cdEl.querySelectorAll('.cell .n');
+    if (cells.length === 4){
+      cells[0].textContent = d;
+      cells[1].textContent = String(h).padStart(2,'0');
+      cells[2].textContent = String(m).padStart(2,'0');
+      cells[3].textContent = String(s).padStart(2,'0');
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ---------- bike marker on the ribbon ----------
   function placeBikeMarker(){
     const ribbon = document.getElementById('ribbon');
     const marker = document.getElementById('bikeMarker');
@@ -1055,10 +1212,10 @@
 
     if (today < raceStart){
       x = 0;
-      text = 'Grand Départ · Sat 22 Aug';
+      text = 'Grand Départ · '+STAGES[0].dateLabel;
     } else if (today > raceEnd){
       x = ribbonRect.width;
-      text = 'Finished · Granada';
+      text = 'Finished · '+STAGES[STAGES.length-1].finish;
     } else if (stageDates[today]){
       const n = stageDates[today];
       const seg = ribbon.querySelector('.seg[data-stage="'+n+'"]');
@@ -1072,7 +1229,7 @@
       text = 'Rest day';
     } else {
       x = 0;
-      text = 'Grand Départ · Sat 22 Aug';
+      text = 'Grand Départ · '+STAGES[0].dateLabel;
     }
 
     // clamp so the badge itself never spills past the ribbon's own edges
@@ -1081,11 +1238,9 @@
     marker.style.left = clampedX + 'px';
     marker.setAttribute('title', text);
   }
-
   placeBikeMarker();
-  window.addEventListener('resize', placeBikeMarker);
 
-  // climb profiles — schematic elevation shapes (0–1 relative height), not GPX data
+  // ---------- climb profiles — schematic elevation shapes (0–1 relative height), not GPX data ----------
   const stageProfiles = {
     1:  [0.10,0.13,0.10,0.14,0.10],
     2:  [0.10,0.30,0.15,0.35,0.15,0.42],
@@ -1112,51 +1267,67 @@
   const terrainColor = {flat:'var(--gold)',hilly:'var(--terracotta)',mountains:'var(--azulejo)',itt:'var(--iron)'};
 
   // categorised climbs per stage — {i: index into stageProfiles[n], cat, name}
-  // only climbs with a confirmed category are marked; unconfirmed peaks are left dotless
+  // cat 'U' = named climb, category still to be confirmed; 'N' = explicitly uncategorised.
+  // Both render hollow, so a summit finish is never left unmarked just because
+  // the organisers haven't published a category for it.
   const stageClimbMarkers = {
     2:  [{i:1,cat:'3',name:'Category 3 climb'},{i:3,cat:'3',name:'Category 3 climb'}],
-    3:  [{i:1,cat:'1',name:'Col de Mont-Louis'}],
+    3:  [{i:1,cat:'1',name:'Col de Mont-Louis'},{i:3,cat:'U',name:'Font Romeu — summit finish'}],
     4:  [{i:1,cat:'1',name:'Port de Envalira'},{i:3,cat:'1',name:'Collada de Beixalis'},{i:5,cat:'1',name:"Coll d'Ordino"},{i:7,cat:'3',name:'Alto de la Comella'}],
     5:  [{i:3,cat:'3',name:'Alto de Paüls'}],
+    7:  [{i:5,cat:'U',name:'Aramón Valdelinares — summit finish'}],
     8:  [{i:3,cat:'2',name:'Puerto de Barx'}],
     9:  [{i:1,cat:'3',name:'Category 3 climb'},{i:3,cat:'3',name:'Category 3 climb'},{i:5,cat:'2',name:'Category 2 climb'},{i:7,cat:'2',name:'Category 2 climb'},{i:9,cat:'1',name:'Category 1 climb'},{i:11,cat:'1',name:'Alto de Aitana — summit finish'}],
+    10: [{i:5,cat:'U',name:'Puerto de Socovos'}],
     11: [{i:2,cat:'3',name:'Alto del Morrón'}],
-    12: [{i:1,cat:'3',name:'Puerto Los Barrancos'},{i:7,cat:'1',name:'Alto de Velefique'}],
+    12: [{i:1,cat:'3',name:'Puerto Los Barrancos'},{i:7,cat:'1',name:'Alto de Velefique'},{i:9,cat:'U',name:'Calar Alto — summit finish'}],
     13: [{i:1,cat:'1',name:'Puerto Los Guájares'},{i:3,cat:'2',name:'Puerto de Granada'}],
-    14: [{i:1,cat:'2',name:'Puerto de Los Villares'},{i:3,cat:'2',name:'Puerto de Locubín'}],
+    14: [{i:1,cat:'2',name:'Puerto de Los Villares'},{i:3,cat:'2',name:'Puerto de Locubín'},{i:7,cat:'U',name:'Sierra de la Pandera — summit finish'}],
     15: [{i:1,cat:'3',name:'Category 3 climb'},{i:3,cat:'3',name:'Category 3 climb'},{i:5,cat:'3',name:'Puerto Artafi'}],
     19: [{i:8,cat:'1',name:'Peñas Blancas–Estepona — summit finish'}],
-    20: [{i:1,cat:'3',name:'Category 3 opener'},{i:3,cat:'1',name:'Alto de Hazallanas (1st ascent)'},{i:5,cat:'1',name:'Puerto de El Purche'},{i:7,cat:'1',name:'Alto de Hazallanas (2nd ascent)'},{i:9,cat:'E',name:'Collado del Alguacil — summit finish'}]
+    20: [{i:1,cat:'3',name:'Category 3 opener'},{i:3,cat:'1',name:'Alto de Hazallanas (1st ascent)'},{i:5,cat:'1',name:'Puerto de El Purche'},{i:7,cat:'1',name:'Alto de Hazallanas (2nd ascent)'},{i:9,cat:'E',name:'Collado del Alguacil — summit finish'}],
+    21: [{i:1,cat:'N',name:'Alhambra circuit climb (1 of 5)'},{i:3,cat:'N',name:'Alhambra circuit climb (2 of 5)'},{i:5,cat:'N',name:'Alhambra circuit climb (3 of 5)'},{i:7,cat:'N',name:'Alhambra circuit climb (4 of 5)'},{i:9,cat:'N',name:'Alhambra circuit climb (5 of 5)'}]
   };
-  const catRadius = {'3':3,'2':4.3,'1':5.6,'E':7};
+  const catRadius = {'3':3,'2':4.3,'1':5.6,'E':7,'U':4.3,'N':3.5};
   const catInfo = {
     '3': {label:'Category 3', desc:'The mildest categorised climb — enough to shake up a sprint, rarely enough to decide the GC.'},
     '2': {label:'Category 2', desc:'A real test of the legs — long or steep enough to soften up a group before the finish.'},
-    '1': {label:'Category 1', desc:'A serious mountain — length and gradient combine to make or break a GC rider\u2019s day.'},
-    'E': {label:'Categoría Especial', desc:'The hardest rating the Vuelta gives out — reserved for the toughest climbs in the race.'}
+    '1': {label:'Category 1', desc:'A serious mountain — length and gradient combine to make or break a GC rider’s day.'},
+    'E': {label:'Categoría Especial', desc:'The hardest rating the Vuelta gives out — reserved for the toughest climbs in the race.'},
+    'U': {label:'Category to be confirmed', desc:'A named climb the organisers haven’t published a category for yet — expect it to be confirmed closer to the stage.'},
+    'N': {label:'Uncategorised', desc:'Not categorised by the organisers, so no mountains points on offer — which doesn’t stop it shaping the finale.'}
   };
 
+  const esc = (s)=> String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // padding leaves room for a marker drawn on the first or last point (and on a
+  // summit at full height) without the viewBox clipping it
+  const MAX_DOT = 8;
+
   function profileSVG(points, color, markers, widthPx){
-    const w = widthPx || 300, h=52, pad=4;
+    const w = widthPx || 300, h=52, padX=MAX_DOT, padY=MAX_DOT;
     const n=points.length;
-    const stepX=(w-2*pad)/(n-1);
-    const coords=points.map((p,i)=>[pad+i*stepX, h-pad-(p*(h-2*pad))]);
+    const stepX=(w-2*padX)/(n-1);
+    const coords=points.map((p,i)=>[padX+i*stepX, h-padY-(p*(h-2*padY))]);
     let line='M'+coords[0][0].toFixed(1)+','+coords[0][1].toFixed(1);
     for(let i=1;i<coords.length;i++){ line+=' L'+coords[i][0].toFixed(1)+','+coords[i][1].toFixed(1); }
     const last=coords[coords.length-1], first=coords[0];
-    const area=line+` L${last[0].toFixed(1)},${h-pad} L${first[0].toFixed(1)},${h-pad} Z`;
+    const area=line+` L${last[0].toFixed(1)},${h-padY} L${first[0].toFixed(1)},${h-padY} Z`;
     let dots='';
     (markers||[]).forEach(m=>{
       const c = coords[m.i];
       if(!c) return;
       const r = catRadius[m.cat] || 3.5;
-      const fill = m.cat==='E' ? 'var(--red)' : color;
-      const name = (m.name || '').replace(/"/g,'&quot;');
-      const label = catInfo[m.cat] ? catInfo[m.cat].label : '';
-      dots += `<circle class="climb-dot-hit" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r+5}" fill="transparent"
-                 tabindex="0" role="button" aria-label="${name} — ${label}"
-                 data-name="${name}" data-cat="${m.cat}"></circle>
-               <circle class="climb-dot" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r}" fill="${fill}" stroke="var(--panel-2)" stroke-width="1.4" pointer-events="none"></circle>`;
+      const info = catInfo[m.cat] || {label:'', desc:''};
+      const hollow = m.cat==='U' || m.cat==='N';
+      const fill = hollow ? 'var(--panel-2)' : (m.cat==='E' ? 'var(--red)' : color);
+      const stroke = hollow ? color : 'var(--panel-2)';
+      const strokeW = hollow ? 2 : 1.4;
+      const name = esc(m.name || '');
+      dots += `<circle class="climb-dot-hit tip-target" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r+5}" fill="transparent"
+                 tabindex="0" role="button" aria-label="${name} — ${esc(info.label)}"
+                 data-tip-name="${name}" data-tip-kicker="${esc(info.label)}" data-tip-body="${esc(info.desc)}"></circle>
+               <circle class="climb-dot" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" pointer-events="none"></circle>`;
     });
     return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
       <path d="${area}" fill="${color}" opacity="0.16"></path>
@@ -1177,76 +1348,93 @@
     });
   }
   renderProfiles();
-  window.addEventListener('resize', renderProfiles);
 
-  // climb-dot tooltip — works on hover, click/tap, and keyboard focus
+  // ---------- tooltip — hover, click/tap and keyboard focus, on dots and ribbon segments ----------
   const climbTip = document.getElementById('climbTooltip');
-  function showClimbTip(hit){
-    const name = hit.dataset.name;
-    const cat = hit.dataset.cat;
-    const info = catInfo[cat];
-    if(!info) return;
-    climbTip.innerHTML = `<span class="ct-name">${name}</span><span class="ct-cat">${info.label}</span>${info.desc}`;
-    const r = hit.getBoundingClientRect();
-    let left = r.left + r.width/2;
-    left = Math.max(90, Math.min(window.innerWidth-90, left));
-    climbTip.style.left = left + 'px';
-    climbTip.style.top = (r.top - 10) + 'px';
+  function showTip(el){
+    const name = el.dataset.tipName || '';
+    const kicker = el.dataset.tipKicker || '';
+    const body = el.dataset.tipBody || '';
+    if (!name && !body) return;
+
+    const nameEl = document.createElement('span');
+    nameEl.className = 'ct-name';
+    nameEl.textContent = name;
+    const kickerEl = document.createElement('span');
+    kickerEl.className = 'ct-cat';
+    kickerEl.textContent = kicker;
+    climbTip.replaceChildren(nameEl, kickerEl, document.createTextNode(body));
+
     climbTip.classList.add('show');
+
+    // Measure from a neutral position first: the tooltip is position:fixed with
+    // `left` set and `right:auto`, so its shrink-to-fit width otherwise depends on
+    // wherever it was last placed — which mis-clamps it near a viewport edge.
+    // Pin the width in px so the placement maths below can trust it.
+    climbTip.style.width = 'auto';
+    climbTip.style.left = '0px';
+    climbTip.style.top = '0px';
+    const w = Math.min(climbTip.getBoundingClientRect().width, window.innerWidth - 16);
+    climbTip.style.width = w + 'px';
+
+    const tipH = climbTip.getBoundingClientRect().height;
+    const halfW = w/2;
+    const r = el.getBoundingClientRect();
+    const left = Math.max(halfW+8, Math.min(window.innerWidth-halfW-8, r.left + r.width/2));
+    const fitsAbove = (r.top - 10 - tipH) >= 8;   // flip below rather than run off the top
+    climbTip.classList.toggle('below', !fitsAbove);
+    climbTip.style.left = left + 'px';
+    climbTip.style.top = (fitsAbove ? r.top - 10 : r.bottom + 10) + 'px';
   }
-  function hideClimbTip(){ climbTip.classList.remove('show'); }
+  function hideTip(){ climbTip.classList.remove('show'); }
 
-  document.addEventListener('mouseover', (e)=>{
-    const hit = e.target.closest('.climb-dot-hit');
-    if(hit) showClimbTip(hit);
+  const tipTarget = (e)=> e.target.closest ? e.target.closest('.tip-target') : null;
+  document.addEventListener('mouseover', e=>{ const t=tipTarget(e); if(t) showTip(t); });
+  document.addEventListener('mouseout',  e=>{ if(tipTarget(e)) hideTip(); });
+  document.addEventListener('focusin',   e=>{ const t=tipTarget(e); if(t) showTip(t); });
+  document.addEventListener('focusout',  e=>{ if(tipTarget(e)) hideTip(); });
+  document.addEventListener('click', e=>{
+    const t = tipTarget(e);
+    if (t && t.classList.contains('climb-dot-hit')){ e.stopPropagation(); showTip(t); }
+    else hideTip();
   });
-  document.addEventListener('mouseout', (e)=>{
-    const hit = e.target.closest('.climb-dot-hit');
-    if(hit) hideClimbTip();
-  });
-  document.addEventListener('focusin', (e)=>{
-    const hit = e.target.closest('.climb-dot-hit');
-    if(hit) showClimbTip(hit);
-  });
-  document.addEventListener('focusout', (e)=>{
-    const hit = e.target.closest('.climb-dot-hit');
-    if(hit) hideClimbTip();
-  });
-  document.addEventListener('click', (e)=>{
-    const hit = e.target.closest('.climb-dot-hit');
-    if(hit){ e.stopPropagation(); showClimbTip(hit); }
-    else { hideClimbTip(); }
-  });
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') hideClimbTip();
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') hideTip(); });
+  // the tooltip is position:fixed and anchored to its target, so it must not linger
+  window.addEventListener('scroll', hideTip, {passive:true});
+
+  // ---------- jumping to a stage ----------
+  function revealStage(item){
+    if (!item) return;
+    // a stage hidden by an active filter can't be scrolled to — drop back to "all"
+    if (item.classList.contains('hidden')) applyFilter('all');
+    setStageOpen(item, true);
+    item.scrollIntoView({behavior:scrollBehavior(), block:'center'});
+  }
+
+  document.getElementById('ribbon').addEventListener('click', e=>{
+    const seg = e.target.closest('.seg');
+    if (!seg) return;
+    hideTip();
+    revealStage(stageByN[parseInt(seg.dataset.stage,10)].el);
   });
 
-  // "Back to Today" — locate today's stage (or the nearest sensible anchor)
+  // ---------- "Back to Today" ----------
   function getTodayTarget(){
     const today = todaySGT();
-    if (stageDates[today]){
-      return document.querySelector('.stage-item[data-date="'+today+'"]');
-    }
-    return null; // pre-race, rest day, or post-race — no specific stage row to jump to
+    // pre-race, rest day or post-race — no specific stage row to jump to
+    return stageDates[today] ? stageByN[stageDates[today]].el : null;
   }
 
   function expandTodayStage(){
     const target = getTodayTarget();
-    if (target){
-      target.classList.add('open');
-      const row = target.querySelector('.stage-row');
-      if (row) row.setAttribute('aria-expanded','true');
-    }
+    if (target) setStageOpen(target, true);
     return target;
   }
 
   function scrollToToday(){
     const target = expandTodayStage();
-    if (target){
-      target.scrollIntoView({behavior:'smooth', block:'center'});
-    } else {
-      document.querySelector('.ribbon-wrap').scrollIntoView({behavior:'smooth', block:'start'});
-    }
+    if (target) revealStage(target);
+    else document.querySelector('.ribbon-wrap').scrollIntoView({behavior:scrollBehavior(), block:'start'});
   }
 
   // expand today's stage immediately — independent of scrolling/animation timing
@@ -1254,23 +1442,48 @@
 
   const backBtn = document.getElementById('backToTodayBtn');
   backBtn.addEventListener('click', scrollToToday);
+  jumpBtn.addEventListener('click', scrollToToday);
 
-  // show the button once the today-marker (or hero, if pre-race) scrolls out of view
+  // Show the floating button only once BOTH today's stage and the callout (which
+  // carries the inline "Jump to today's stage" button) are off screen — otherwise
+  // the page offers the same action twice at once.
   const showAnchor = getTodayTarget() || document.querySelector('.ribbon-wrap');
+  const calloutEl = document.getElementById('callout');
   if (showAnchor){
-    const io = new IntersectionObserver((entries)=>{
+    const onScreen = new WeakSet();
+    const io = new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
-        backBtn.classList.toggle('show', !entry.isIntersecting);
+        if (entry.isIntersecting) onScreen.add(entry.target); else onScreen.delete(entry.target);
       });
+      backBtn.classList.toggle('show', !onScreen.has(showAnchor) && !onScreen.has(calloutEl));
     }, {threshold:0});
     io.observe(showAnchor);
+    if (calloutEl && calloutEl !== showAnchor) io.observe(calloutEl);
   }
 
-  // auto-scroll to today's stage on load, if the race is under way
+  // ---------- resize: coalesce marker moves per frame, only redraw profiles on a real width change ----------
+  let markerFrame = null, profileTimer = null, lastWidth = window.innerWidth;
+  window.addEventListener('resize', ()=>{
+    if (markerFrame) cancelAnimationFrame(markerFrame);
+    markerFrame = requestAnimationFrame(()=>{ markerFrame = null; placeBikeMarker(); });
+    if (window.innerWidth === lastWidth) return; // height-only change (mobile URL bar) needs no redraw
+    lastWidth = window.innerWidth;
+    clearTimeout(profileTimer);
+    profileTimer = setTimeout(renderProfiles, 120);
+  });
+
+  // ---------- auto-scroll to today's stage, but never fight the reader ----------
+  const navEntry = performance.getEntriesByType('navigation')[0];
+  const isRestoredNav = !!navEntry && navEntry.type === 'back_forward';
+  let userActed = false;
+  ['wheel','touchstart','keydown','pointerdown'].forEach(ev=>{
+    window.addEventListener(ev, ()=>{ userActed = true; }, {once:true, passive:true});
+  });
+
   window.addEventListener('load', ()=>{
     setTimeout(()=>{
-      const target = getTodayTarget();
-      if (target) scrollToToday();
+      if (userActed || isRestoredNav || location.hash || window.scrollY > 4) return;
+      if (getTodayTarget()) scrollToToday();
     }, 450);
   });
 </script>
