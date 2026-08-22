@@ -5,27 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <title>La Vuelta a España 2026</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22%20fill%3D%22%23C11F2E%22/%3E%0A%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2223%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22/%3E%0A%3Cpath%20d%3D%22M9%2020L16%209H21M9%2020L19%2020L22%2012M19%2020L23%2020M16%209H13%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22%20fill%3D%22%23D9556C%22/%3E%0A%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23FBF1E7%22%20stroke-width%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2223%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23FBF1E7%22%20stroke-width%3D%222%22/%3E%0A%3Cpath%20d%3D%22M9%2020L16%209H21M9%2020L19%2020L22%2012M19%2020L23%2020M16%209H13%22%20fill%3D%22none%22%20stroke%3D%22%23FBF1E7%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..600;1,9..144,500&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --wall:#EDE9DE;
-    --wall-2:#E2DBC9;
-    --panel:#F5F1E7;
-    --panel-2:#EFE8D8;
-    --ink:#221C15;
-    --ink-soft:#5E5647;
-    --ink-faint:#8A8171;
-    --line:#D2C9B2;
-    --azulejo:#2B5C73;
-    --azulejo-deep:#1C3F52;
-    --terracotta:#BC5A34;
-    --gold:#B98A2E;
-    --iron:#544A3E;
-    --red:#C11F2E;
-    --red-deep:#8E1420;
+    --wall:#FBF1E7;
+    --wall-2:#F3E1CE;
+    --panel:#FEFAF5;
+    --panel-2:#F8ECDD;
+    --ink:#5B4034;
+    --ink-soft:#8C6F5F;
+    --ink-faint:#B39A87;
+    --line:#EDD9C4;
+    --azulejo:#8FC5D6;
+    --azulejo-deep:#2F6B80;
+    --terracotta:#F0A98A;
+    --gold:#F0C878;
+    --iron:#A99A8C;
+    --red:#D9556C;
+    --red-deep:#A83E52;
+    --sage:#A8C99A;
+    --sage-deep:#6B9457;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -38,7 +40,7 @@
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
-  ::selection{background:var(--red);color:#fff;}
+  ::selection{background:var(--red-deep);color:#fff;}
   a{color:var(--azulejo-deep);}
   .mono{font-family:'IBM Plex Mono',monospace;}
   .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
@@ -235,7 +237,7 @@
     transition:opacity .2s ease,transform .2s ease,background .15s ease;
   }
   .back-today.show{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .back-today:hover{background:var(--red);border-color:var(--red);}
+  .back-today:hover{background:var(--red-deep);border-color:var(--red-deep);}
   .back-today:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   .back-today .arrow{display:inline-block;transform:translateY(-1px);}
   @media (max-width:640px){
@@ -258,6 +260,23 @@
   .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:14.5px;margin:10px 0 8px;}
   .rider-card p{font-size:13.8px;color:var(--ink-soft);margin:0;}
 
+  /* current leaders (hand-updated) */
+  .leaders-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:3px;
+    padding:20px 22px;margin-top:8px;
+  }
+  .leaders-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .leader-card{display:flex;align-items:center;gap:14px;}
+  .avatar-sm{width:52px;height:52px;flex:none;border-radius:50%;}
+  .leader-card .jl b{display:block;font-size:12px;color:var(--ink-soft);font-weight:600;}
+  .leader-card .jl .rider{display:block;font-size:14.5px;font-weight:600;margin-top:3px;}
+  .leader-card .jl .detail{display:block;font-size:11.5px;color:var(--ink-faint);margin-top:1px;}
+  .leaders-updated{
+    margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line);
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+  }
+  .leaders-updated a{color:var(--azulejo-deep);}
+
   /* live results link-out */
   .results-link{
     display:inline-flex;align-items:center;gap:8px;
@@ -266,7 +285,7 @@
     padding:12px 20px;border-radius:24px;text-decoration:none;
     transition:background .15s ease,transform .15s ease;
   }
-  .results-link:hover{background:var(--red);transform:translateY(-1px);}
+  .results-link:hover{background:var(--red-deep);transform:translateY(-1px);}
   .results-link .arrow{transition:transform .15s ease;}
   .results-link:hover .arrow{transform:translateX(3px);}
 
@@ -871,6 +890,82 @@
       <div class="headline">Spain's nearly man, at home</div>
       <p>Mas has finished runner-up at the Vuelta three times without ever taking the top step, and leads a Movistar team built around him on home roads. A difficult Giro d'Italia this year complicates the picture, but a fifth place at the Vuelta a Burgos suggests his form is coming back at the right time.</p>
     </div>
+  </div>
+
+  <h3 class="section-h">Current leaders</h3>
+  <p class="section-sub">Filled in by hand after checking lavuelta.es — ask for an update any day and I'll refresh it.</p>
+  <div class="leaders-panel">
+    <div class="leaders-grid">
+      <div class="leader-card">
+        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red jersey — general classification leader">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="var(--red)"/>
+        
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="var(--red-deep)"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="jl"><b>Red — General classification</b><span class="rider" id="leader-gc">Not yet decided</span><span class="detail" id="leader-gc-detail">Stage 1's time trial is still underway</span></div>
+      </div>
+      <div class="leader-card">
+        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Green jersey — points classification leader">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="var(--sage)"/>
+        
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="var(--sage-deep)"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="jl"><b>Green — Points</b><span class="rider" id="leader-pts">Not yet decided</span><span class="detail" id="leader-pts-detail">Stage 1's time trial is still underway</span></div>
+      </div>
+      <div class="leader-card">
+        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White jersey with blue polka dots — mountains classification leader">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
+        
+        <circle cx="24" cy="80" r="2.6" fill="var(--azulejo)"/><circle cx="34" cy="72" r="2.6" fill="var(--azulejo)"/><circle cx="44" cy="86" r="2.6" fill="var(--azulejo)"/><circle cx="56" cy="74" r="2.6" fill="var(--azulejo)"/><circle cx="64" cy="84" r="2.6" fill="var(--azulejo)"/><circle cx="50" cy="90" r="2.6" fill="var(--azulejo)"/>
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="var(--azulejo-deep)"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="jl"><b>Blue polka dot — Mountains</b><span class="rider" id="leader-kom">Not yet decided</span><span class="detail" id="leader-kom-detail">No categorised climbs on Stage 1</span></div>
+      </div>
+      <div class="leader-card">
+        <svg class="avatar avatar-sm" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="White jersey — best young rider classification leader">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#FDFBF5"/>
+        
+        
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#B8AF9A"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#4A4038"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="jl"><b>White — Best young rider</b><span class="rider" id="leader-you">Not yet decided</span><span class="detail" id="leader-you-detail">Stage 1's time trial is still underway</span></div>
+      </div>
+    </div>
+    <p class="leaders-updated" id="leadersUpdated">Last updated: 22 Aug 2026, before Stage 1 results — <a href="https://www.lavuelta.es/en/rankings" target="_blank" rel="noopener">lavuelta.es</a></p>
   </div>
 
   <h3 class="section-h">Live results</h3>
