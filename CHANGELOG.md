@@ -7,6 +7,27 @@ Sections follow [Keep a Changelog](https://keepachangelog.com/) conventions:
 **Fixed** for bug fixes, and **Known limitations** for things that are
 deliberately incomplete or still unverified.
 
+## 2026-08-23
+
+### Added
+
+- **Stage results and jersey holders.** Each completed stage now carries a result block in its detail panel: the stage podium (top three, with teams and gaps) and the four classification leaders after that stage — red (general classification, Carrefour), green (points, Škoda), white with blue polka dots (mountains) and white (best young rider). Stage 1's Monaco time trial is in: Tadej Pogačar by 0.09s over Ethan Hayter, with Josh Tarling third at four seconds; Pogačar in red and green, Tarling in white, and no mountains leader yet.
+- **"In the jerseys" section at the top of the page**, directly under the race callout, showing who is in each of the four jerseys right now and what each classification is awarded for. It is *derived* — built at runtime by cloning the four jersey cards from the last stage in the running order that has a result — so recording a new stage means editing one place in the stage list and nothing at the top. It stays hidden until a stage has been ridden, and again after the final stage it reads as the final classifications.
+- **Winner chip on completed stage rows**, so the running order shows who won each stage without opening it.
+
+### Changed
+
+- **The "Live results" section no longer disclaims tracking results.** It now explains that podiums and jersey holders are recorded per stage and summarised at the top, and points to lavuelta.es for live timing and the full classifications rather than for everything.
+- **Footer and contender copy corrected for a race that has started** — the footer no longer says "the 2026 Vuelta a España has not yet started", the contender notes are labelled as a pre-race snapshot that is not revised stage by stage, and the results sources are credited alongside the route sources.
+- Page description and Open Graph / Twitter card text mention results and jersey holders.
+
+### Known limitations
+
+- **Results are entered by hand after each stage, not live.** There is no feed behind them; between the finish and the next edit the page is out of date, and during a stage it shows the previous stage's jerseys.
+- **Only the stage podium is listed.** Sources disagreed below third place on Stage 1, so positions 4 and beyond are deliberately not claimed. Full classifications stay on lavuelta.es.
+- **The mountains classification had no leader after Stage 1** — the Monaco circuit had no categorised climbs, so that card reads "Not yet awarded" until Stage 2.
+- **The "In the jerseys" section needs JavaScript.** It is cloned from the stage markup at runtime, so it is hidden in the `noscript` fallback — but each stage's own result block is static markup and stays fully readable without JS.
+
 ## 2026-08-22
 
 ### Added
