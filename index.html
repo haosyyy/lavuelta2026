@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<meta name="description" content="An unofficial stage-by-stage guide to the 2026 Vuelta a España — all 21 stages from Monaco to Granada, with distances, terrain, schematic climb profiles and start times in Singapore time.">
+<meta name="description" content="An unofficial stage-by-stage guide to the 2026 Vuelta a España — all 21 stages from Monaco to Granada, with distances, terrain, schematic climb profiles and start times in Singapore time, plus each completed stage’s podium and jersey holders.">
 <title>La Vuelta a España 2026</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="La Vuelta a España 2026 — stage by stage">
-<meta property="og:description" content="All 21 stages from Monaco to Granada, 22 August – 13 September 2026: distances, terrain, schematic climb profiles and start times in Singapore time.">
+<meta property="og:description" content="All 21 stages from Monaco to Granada, 22 August – 13 September 2026: distances, terrain, schematic climb profiles and start times in Singapore time, plus results and jersey holders as the race unfolds.">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="La Vuelta a España 2026 — stage by stage">
-<meta name="twitter:description" content="All 21 stages from Monaco to Granada, 22 August – 13 September 2026: distances, terrain, schematic climb profiles and start times in Singapore time.">
+<meta name="twitter:description" content="All 21 stages from Monaco to Granada, 22 August – 13 September 2026: distances, terrain, schematic climb profiles and start times in Singapore time, plus results and jersey holders as the race unfolds.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22%20fill%3D%22%23C11F2E%22/%3E%0A%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2223%22%20cy%3D%2220%22%20r%3D%225.2%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22/%3E%0A%3Cpath%20d%3D%22M9%2020L16%209H21M9%2020L19%2020L22%2012M19%2020L23%2020M16%209H13%22%20fill%3D%22none%22%20stroke%3D%22%23F5F1E7%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +34,7 @@
     --iron:#544A3E;
     --red:#C11F2E;
     --red-deep:#8E1420;
+    --verde:#2E7D4F;      /* points-classification green */
     /* warm red washes for today's stage — both keep body text above WCAG AA */
     --today-wash:#F2E4DC;
     --today-wash-2:#EDDED0;
@@ -305,6 +306,94 @@
   .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:15.5px;margin:11px 0 9px;}
   .rider-card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0;}
 
+  /* ---------- stage results & jersey wearers ---------- */
+  /* The per-stage .result-block lives in the stage markup (so it survives with
+     JS off); the "In the jerseys" section at the top is cloned from the most
+     recent one at runtime. Both share the .jerseys / .jcard styles below. */
+  .result-block{
+    margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);
+  }
+  .result-block .rl{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--ink-faint);margin-bottom:8px;
+  }
+  .result-block .rl + .jerseys{margin-bottom:0;}
+  .podium{
+    list-style:none;margin:0 0 18px;padding:0;
+    border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--panel);
+  }
+  .podium li{
+    display:flex;align-items:center;gap:12px;
+    padding:9px 13px;border-top:1px solid var(--line);border-left:3px solid var(--line);
+  }
+  .podium li:first-child{border-top:0;}
+  .podium li.p1{border-left-color:var(--red);}
+  .podium li.p2{border-left-color:var(--ink-faint);}
+  .podium .pr{
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13.5px;
+    width:14px;flex:none;text-align:center;color:var(--ink-faint);
+  }
+  .podium li.p1 .pr{color:var(--red-deep);}
+  .podium .pi{flex:1;min-width:0;}
+  .podium .pn{display:block;font-weight:600;font-size:15px;color:var(--ink);line-height:1.3;}
+  .podium .pt{
+    display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;
+    color:var(--ink-faint);margin-top:2px;
+  }
+  .podium .pg{font-size:13.5px;color:var(--ink-soft);flex:none;}
+
+  .jerseys{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:10px;margin:0 0 4px;
+  }
+  .jcard{
+    background:var(--panel);border:1px solid var(--line);border-radius:3px;
+    padding:12px 14px;border-left:4px solid var(--line);
+  }
+  .jcard.j-red{border-left-color:var(--red);}
+  .jcard.j-green{border-left-color:var(--verde);}
+  .jcard.j-white{border-left-color:#fff;box-shadow:inset 5px 0 0 -4px var(--line);}
+  /* the Vuelta's mountains jersey is white with BLUE polka dots — the accent
+     bar is painted into the transparent left border, so background-origin has
+     to be the border box rather than the default padding box */
+  .jcard.j-polka{
+    border-left-color:transparent;
+    background:
+      radial-gradient(circle at 2px 6px,var(--azulejo) 1.7px,transparent 1.9px) left top/4px 12px repeat-y,
+      linear-gradient(#fff,#fff) left top/4px 100% no-repeat,
+      var(--panel);
+    background-origin:border-box;
+    background-clip:border-box;
+    box-shadow:inset 5px 0 0 -4px var(--line);
+  }
+  .jcard.is-empty{opacity:.72;}
+  .jcard .jl{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--ink-faint);line-height:1.45;
+  }
+  .jcard .jn{font-weight:600;font-size:15px;color:var(--ink);margin-top:5px;line-height:1.25;}
+  .jcard.is-empty .jn{color:var(--ink-soft);font-style:italic;font-weight:500;}
+  .jcard .jt{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;
+    color:var(--ink-faint);margin-top:3px;
+  }
+  .jcard .jx{font-size:12px;color:var(--ink-soft);margin-top:7px;line-height:1.5;}
+  .jcard .jd{font-size:12.5px;color:var(--ink-soft);margin-top:7px;line-height:1.5;}
+
+  /* the derived section at the top of the page */
+  .jersey-now[hidden]{display:none;}
+  .jersey-now .jerseys{margin-top:2px;}
+
+  /* stage winner chip on a completed stage row */
+  .stage-row .won{
+    display:inline-block;margin-left:9px;transform:translateY(-1px);
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;
+    letter-spacing:.03em;white-space:nowrap;
+    background:var(--panel-2);color:var(--red-deep);
+    border:1px solid var(--line);border-radius:20px;padding:2px 9px;
+  }
+  .stage-item.open .stage-row .won{background:var(--panel);}
+
   /* live results link-out */
   .results-link{
     display:inline-flex;align-items:center;gap:8px;
@@ -373,11 +462,13 @@
 <body>
 
 <noscript>
-  <!-- The ribbon, profiles, countdown and accordion are all script-driven.
-       Without JS, fall back to a plain, fully readable stage list rather than
-       leaving the details permanently collapsed. -->
+  <!-- The ribbon, profiles, countdown, accordion and the "In the jerseys"
+       section are all script-driven. Without JS, fall back to a plain, fully
+       readable stage list rather than leaving the details permanently
+       collapsed — each completed stage's result and jersey block is in the
+       markup, so nothing but the top-of-page summary is lost. -->
   <style>
-    .ribbon-wrap,.filters,.countdown,.back-today,.profile-block{display:none;}
+    .ribbon-wrap,.filters,.countdown,.back-today,.profile-block,.jersey-now{display:none;}
     .stage-detail{grid-template-rows:1fr;}
     .stage-row{cursor:default;}
     .stage-row .chev{display:none;}
@@ -451,6 +542,15 @@
     <div class="countdown mono" id="countdown"></div>
   </div>
 
+  <!-- Built at runtime from the most recent stage that has a .result-block, so
+       adding a stage result is a one-place edit down in the stage list. Stays
+       hidden while no stage has been ridden. -->
+  <section class="jersey-now" id="jerseyNow" hidden>
+    <h3 class="section-h">In the jerseys</h3>
+    <p class="section-sub" id="jerseyNowSub"></p>
+    <div class="jerseys" id="jerseyNowGrid"></div>
+  </section>
+
   <h3 class="section-h">Stage by stage</h3>
   <p class="section-sub">All 21 stages, start to finish. Filter by terrain above, tap a stage to open its profile, categorised climbs and estimated timing. On each climb profile, dot size marks climb category — Cat.3 (smallest) through Cat.1, with Categoría Especial (red, largest) reserved for Stage 20's summit finish. Hollow dots mark a named climb whose category the organisers haven't confirmed yet; stages with no dots have no categorised climbs at all.</p>
 
@@ -459,7 +559,7 @@
     <div class="stage-item" data-terrain="itt" data-date="2026-08-22">
       <button class="stage-row" aria-expanded="false" aria-controls="d1">
         <span class="n">01</span><span class="date">Sat 22 Aug</span>
-        <span class="route"><strong>Monaco → Monaco</strong><span class="note">Technical circuit through Monte Carlo; first red jersey</span></span>
+        <span class="route"><strong>Monaco → Monaco</strong><span class="won">Pogačar</span><span class="note">Technical circuit through Monte Carlo; first red jersey</span></span>
         <span class="dist mono">9.4 km</span><span class="terrain">Time trial</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d1"><div class="detail-inner">
@@ -469,6 +569,45 @@
           <div class="detail-block"><div class="dl">Climbs</div><div class="dv">None categorised; tight corners through Monte Carlo</div></div>
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">First rider ≈ 10:45 PM · Last (GC favourites) ≈ 1:15 AM +1</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="1"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+
+        <!-- Result + jersey holders. One .result-block per completed stage, in
+             the stage's own markup; the "In the jerseys" section at the top of
+             the page is cloned from the last one of these in document order. -->
+        <div class="result-block">
+          <div class="rl">Stage result · individual time trial</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Tadej Pogačar</span><span class="pt">UAE Team Emirates-XRG</span></span><span class="pg mono">10:57.14</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Ethan Hayter</span><span class="pt">Soudal Quick-Step</span></span><span class="pg mono">+0.09</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Josh Tarling</span><span class="pt">Netcompany INEOS</span></span><span class="pg mono">+0:04</span></li>
+          </ol>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">10:57 — Hayter on the same official time; 0.09s on the road decided it.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">20 pts, ahead of Hayter (17) and Tarling (15).</div>
+            </div>
+            <div class="jcard j-polka is-empty" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Not yet awarded</div>
+              <div class="jt">—</div>
+              <div class="jx">No categorised climbs on the Monaco circuit; the classification opens on stage 2.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Josh Tarling</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">11:01, with Thornley at +0:01 and Bisiaux at +0:04.</div>
+            </div>
+          </div>
         </div>
       </div></div></div>
     </div>
@@ -856,7 +995,7 @@
   </div>
 
   <h3 class="section-h">Contenders</h3>
-  <p class="section-sub">Form and headlines heading into the Grand Départ — as of 21 August 2026. Jonas Vingegaard, the 2025 champion, will not defend his title after breaking his collarbone at the Tour de France.</p>
+  <p class="section-sub">Form and headlines heading into the Grand Départ — written as of 21 August 2026 and kept as a snapshot of the pre-race picture, not updated stage by stage. Jonas Vingegaard, the 2025 champion, is not defending his title after breaking his collarbone at the Tour de France.</p>
   <div class="cards">
     <div class="rider-card">
       <div class="rider-head">
@@ -923,15 +1062,16 @@
   </div>
 
   <h3 class="section-h">Live results</h3>
-  <p class="section-sub">This page doesn't track live stage results or jersey standings — those change by the minute once racing starts, and belong on the official site.</p>
+  <p class="section-sub">Once a stage has been ridden, its podium and the four jersey holders are recorded on the stage itself, and the most recent set is summarised under <a href="#jerseyNow">In the jerseys</a> at the top. That's a hand-updated snapshot, not live timing — for the race as it happens, and for the full classifications beyond the top three, go to the official rankings.</p>
   <a class="results-link" href="https://www.lavuelta.es/en/rankings" target="_blank" rel="noopener">
     View stage results &amp; jersey rankings on lavuelta.es <span class="arrow">→</span>
   </a>
 
   <footer>
-    <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered; the final start list is confirmed close to the Grand Départ. Distances, climb categories and finish details may still be adjusted by race organisers before Saturday.</p>
+    <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered. Distances, climb categories and finish details may still be adjusted by race organisers during the race.</p>
+    <p>Stage results and jersey holders: ProCyclingStats, CyclingUpToDate and IDL Procycling, entered by hand after each stage. Only the stage podium is listed; sources disagreed below third place on stage 1, so nothing beyond the top three is claimed here.</p>
     <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets Stage 1's estimated first rider off (≈10:45 PM SGT, 22 Aug — converted from ≈4:45 PM CEST in Monaco).</p>
-    <p>Contender notes reflect team news and 2025–26 form as reported ahead of the race, not confirmed results — the 2026 Vuelta a España has not yet started.</p>
+    <p>Contender notes reflect team news and 2025–26 form as reported ahead of the Grand Départ, and are not revised as the race unfolds — the results and jersey panels above are the current picture.</p>
   </footer>
 </div>
 
@@ -980,6 +1120,58 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const scrollBehavior = ()=> reduceMotion.matches ? 'auto' : 'smooth';
+
+  // ---------- "In the jerseys", derived from the last stage result ----------
+  // Each completed stage carries a .result-block in its own markup. The panel
+  // at the top of the page is a clone of the last one in document order, so a
+  // new stage result is a single edit in the stage list and nothing up here.
+  const JERSEY_BLURB = {
+    red:   'Lowest cumulative time overall. Sponsored by Carrefour.',
+    green: 'Points from stage finishes and intermediate sprints. Sponsored by Škoda.',
+    polka: 'Points over categorised climbs — the best climber.',
+    white: 'Best-placed rider under 26 in the general classification.'
+  };
+
+  function buildJerseyNow(){
+    const panel = document.getElementById('jerseyNow');
+    const grid  = document.getElementById('jerseyNowGrid');
+    const sub   = document.getElementById('jerseyNowSub');
+    if (!panel || !grid || !sub) return;
+
+    // last stage in document order that has a result recorded
+    const withResult = STAGES.filter(s=>s.el.querySelector('.result-block'));
+    if (!withResult.length) return;
+    const last = withResult[withResult.length-1];
+    const cards = last.el.querySelectorAll('.result-block .jcard');
+    if (!cards.length) return;
+
+    grid.replaceChildren();
+    cards.forEach(card=>{
+      const copy = card.cloneNode(true);
+      copy.removeAttribute('id');
+      // the per-stage note is stage-specific; up here each card explains its
+      // own classification instead
+      copy.querySelectorAll('.jx').forEach(el=>el.remove());
+      const blurb = JERSEY_BLURB[copy.dataset.jersey];
+      if (blurb){
+        const d = document.createElement('div');
+        d.className = 'jd';
+        d.textContent = blurb;
+        copy.appendChild(d);
+      }
+      grid.appendChild(copy);
+    });
+
+    const next = STAGES.find(s=>s.n === last.n + 1);
+    sub.textContent =
+      'Who is wearing what after stage '+last.n+' · '+last.route+' · '+last.dateLabel+'. '
+      + (next
+          ? 'These are the jerseys on the start line of stage '+next.n+', '+next.route+'.'
+          : 'These are the final classifications of the race.');
+
+    panel.hidden = false;
+  }
+  buildJerseyNow();
 
   // ---------- ribbon, built from the stage data ----------
   function buildRibbon(){
