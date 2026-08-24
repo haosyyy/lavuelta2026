@@ -341,6 +341,10 @@
     color:var(--ink-faint);margin-top:2px;
   }
   .podium .pg{font-size:13.5px;color:var(--ink-soft);flex:none;}
+  .result-note{
+    font-size:14px;line-height:1.6;color:var(--ink-soft);
+    margin:-8px 0 18px;padding-left:13px;border-left:2px solid var(--line);
+  }
 
   .jerseys{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
@@ -581,6 +585,7 @@
             <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Ethan Hayter</span><span class="pt">Soudal Quick-Step</span></span><span class="pg mono">+0.09</span></li>
             <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Josh Tarling</span><span class="pt">Netcompany INEOS</span></span><span class="pg mono">+0:04</span></li>
           </ol>
+          <p class="result-note">Tarling set the early benchmark and held the hot seat until Hayter went faster. Pogačar, off last with the GC favourites, then beat Hayter by nine hundredths of a second over 9.4km.</p>
           <div class="rl">Jerseys after this stage</div>
           <div class="jerseys">
             <div class="jcard j-red" data-jersey="red">
@@ -615,7 +620,7 @@
     <div class="stage-item" data-terrain="hilly" data-date="2026-08-23">
       <button class="stage-row" aria-expanded="false" aria-controls="d2">
         <span class="n">02</span><span class="date">Sun 23 Aug</span>
-        <span class="route"><strong>Monaco → Manosque</strong><span class="note">Longest stage of the race; uphill drag to the line</span></span>
+        <span class="route"><strong>Monaco → Manosque</strong><span class="won">Brennan</span><span class="note">Longest stage of the race; uphill drag to the line</span></span>
         <span class="dist mono">215.2 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d2"><div class="detail-inner">
@@ -625,6 +630,43 @@
           <div class="detail-block"><div class="dl">Climbs</div><div class="dv">2 × category 3, both in the first half</div></div>
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:30 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="2"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Matthew Brennan</span><span class="pt">Team Visma | Lease a Bike</span></span><span class="pg mono">4:47:47</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Pau Miquel</span><span class="pt">Bahrain Victorious</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Tadej Pogačar</span><span class="pt">UAE Team Emirates-XRG</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-note">Van Aert attacked inside the last 2km and Pogačar went with him, but the move was swallowed up and Brennan — 21, on his Grand Tour debut — came past Pedersen to win the uphill sprint. Ethan Hayter had taken red on the road on bonus seconds earlier in the day, then lost it again when he was caught behind a split in the finale.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">4:58:40, with Van Aert at +0:09 and Brennan at +0:10.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">42 pts, ahead of Hayter (37) and Brennan (30).</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Koen Bouwman</div>
+              <div class="jt">Team Jayco AlUla</div>
+              <div class="jx">First leader of the classification with 6 pts, over the day's two cat.3 climbs.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Matthew Brennan</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Takes it off Tarling on the back of the stage win; Bisiaux +0:02, Fisher-Black +0:04.</div>
+            </div>
+          </div>
         </div>
       </div></div></div>
     </div>
@@ -1069,7 +1111,7 @@
 
   <footer>
     <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered. Distances, climb categories and finish details may still be adjusted by race organisers during the race.</p>
-    <p>Stage results and jersey holders: ProCyclingStats, CyclingUpToDate and IDL Procycling, entered by hand after each stage. Only the stage podium is listed; sources disagreed below third place on stage 1, so nothing beyond the top three is claimed here.</p>
+    <p>Stage results and jersey holders: ProCyclingStats, CyclingUpToDate, IDL Procycling, Cyclingnews and Cycling West, entered by hand after each stage. Only the stage podium is listed; sources disagreed below third place on stage 1, so nothing beyond the top three is claimed here.</p>
     <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets Stage 1's estimated first rider off (≈10:45 PM SGT, 22 Aug — converted from ≈4:45 PM CEST in Monaco).</p>
     <p>Contender notes reflect team news and 2025–26 form as reported ahead of the Grand Départ, and are not revised as the race unfolds — the results and jersey panels above are the current picture.</p>
   </footer>
