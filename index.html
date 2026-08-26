@@ -345,6 +345,15 @@
     font-size:14px;line-height:1.6;color:var(--ink-soft);
     margin:-8px 0 18px;padding-left:13px;border-left:2px solid var(--line);
   }
+  /* a stage that was cancelled has no ranking to show — echo the rest-day
+     stripe rather than rendering an empty podium */
+  .result-void{
+    font-size:14px;line-height:1.6;color:var(--ink-soft);margin:0 0 18px;
+    padding:12px 14px;border:1px dashed var(--line);border-radius:3px;
+    background:repeating-linear-gradient(-45deg,var(--wall) 0 5px,var(--wall-2) 5px 10px);
+  }
+  .result-void b{color:var(--ink);font-weight:600;}
+  .stage-row .won.void{color:var(--ink-faint);background:transparent;font-style:italic;}
 
   .jerseys{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
@@ -380,6 +389,12 @@
   .jcard .jt{
     font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;
     color:var(--ink-faint);margin-top:3px;
+  }
+  /* when one rider leads several classifications, the jersey is worn on the
+     road by the next rider down — that line survives into the top panel */
+  .jcard .jw{
+    font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;
+    color:var(--red-deep);margin-top:6px;line-height:1.45;
   }
   .jcard .jx{font-size:12px;color:var(--ink-soft);margin-top:7px;line-height:1.5;}
   .jcard .jd{font-size:12.5px;color:var(--ink-soft);margin-top:7px;line-height:1.5;}
@@ -598,6 +613,7 @@
               <div class="jl">Green · Points</div>
               <div class="jn">Tadej Pogačar</div>
               <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Ethan Hayter · Soudal Quick-Step</div>
               <div class="jx">20 pts, ahead of Hayter (17) and Tarling (15).</div>
             </div>
             <div class="jcard j-polka is-empty" data-jersey="polka">
@@ -652,6 +668,7 @@
               <div class="jl">Green · Points</div>
               <div class="jn">Tadej Pogačar</div>
               <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Ethan Hayter · Soudal Quick-Step</div>
               <div class="jx">42 pts, ahead of Hayter (37) and Brennan (30).</div>
             </div>
             <div class="jcard j-polka" data-jersey="polka">
@@ -674,7 +691,7 @@
     <div class="stage-item" data-terrain="mountains" data-date="2026-08-24">
       <button class="stage-row" aria-expanded="false" aria-controls="d3">
         <span class="n">03</span><span class="date">Mon 24 Aug</span>
-        <span class="route"><strong>Gruissan → Font Romeu</strong><span class="note">Summit finish above 1,800m; first real GC gaps</span></span>
+        <span class="route"><strong>Gruissan → Font Romeu</strong><span class="won void">Cancelled</span><span class="note">Summit finish above 1,800m; first real GC gaps</span></span>
         <span class="dist mono">166.7 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d3"><div class="detail-inner">
@@ -685,13 +702,46 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:15 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="3"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <p class="result-void"><b>Cancelled — no stage ranking.</b> A hailstorm caught the reduced bunch on the Col de Mont-Louis, roughly 20km from the summit finish. Pogačar rode to the front, waved the group down and pointed them off the course; the riders sheltered in a nearby hotel and the stage was abandoned rather than restarted. No finishing times or climbing points were recorded, so the first summit finish of the race never happened and every classification stands exactly as it did after stage 2.</p>
+          <div class="rl">Jerseys after this stage — unchanged</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">Unchanged: 4:58:40, Van Aert +0:09, Brennan +0:10.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Ethan Hayter · Soudal Quick-Step</div>
+              <div class="jx">Unchanged on 42 pts — Hayter won the intermediate sprint at Villefranche-de-Conflent, but nothing from the day was recorded.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Koen Bouwman</div>
+              <div class="jt">Team Jayco AlUla</div>
+              <div class="jx">Unchanged on 6 pts; the Col de Mont-Louis and Font Romeu points were never awarded.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Matthew Brennan</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Unchanged, one more day in white.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="mountains" data-date="2026-08-25">
       <button class="stage-row" aria-expanded="false" aria-controls="d4">
         <span class="n">04</span><span class="date">Tue 25 Aug</span>
-        <span class="route"><strong>Andorra la Vella → Andorra la Vella</strong><span class="note">Short and explosive; three big climbs, little respite</span></span>
+        <span class="route"><strong>Andorra la Vella → Andorra la Vella</strong><span class="won">Pogačar</span><span class="note">Short and explosive; three big climbs, little respite</span></span>
         <span class="dist mono">104.9 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d4"><div class="detail-inner">
@@ -701,6 +751,45 @@
           <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Port de Envalira (cat.1) · Collada de Beixalis (cat.1) · Coll d'Ordino (cat.1) · Alto de la Comella (cat.3)</div></div>
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 10:45 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="4"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Tadej Pogačar</span><span class="pt">UAE Team Emirates-XRG</span></span><span class="pg mono">2:40:35</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Jarno Widar</span><span class="pt">Lotto–Intermarché</span></span><span class="pg mono">+2:39</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Felix Gall</span><span class="pt">Decathlon CMA CGM</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-note">Racing resumed with the shortest road stage of the race and Pogačar took it apart: he went alone with 50km left, over the Coll d'Ordino and the Collada de Beixalis, and rode in more than two and a half minutes clear. Roglič, Mas, Kuss and Carapaz all lost over three minutes, and the general classification stopped looking like a contest on day four.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">7:38:59, with Roglič at +3:21 and Mas at +3:32.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Ethan Hayter · Soudal Quick-Step</div>
+              <div class="jx">82 pts to Hayter's 37 — Pogačar rides in red, so green goes to the next rider down.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Lorenzo Fortunato · XDS Astana Team</div>
+              <div class="jx">Takes it off Bouwman with 23 pts, to Fortunato's 10.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Up 15 places on the first mountain day; Widar +0:21, Debruyne +0:59.</div>
+            </div>
+          </div>
         </div>
       </div></div></div>
     </div>

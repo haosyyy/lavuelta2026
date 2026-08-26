@@ -7,6 +7,18 @@ Sections follow [Keep a Changelog](https://keepachangelog.com/) conventions:
 **Fixed** for bug fixes, and **Known limitations** for things that are
 deliberately incomplete or still unverified.
 
+## 2026-08-26
+
+### Added
+
+- **Stage 3 — cancelled, and shown as cancelled.** A hailstorm caught the reduced bunch on the Col de Mont-Louis about 20km from the summit finish; Pogačar rode to the front, waved the group down and pointed it off the course, and the stage was abandoned rather than restarted. The stage carries a `.result-void` panel in place of a podium — striped like the rest-day rows — and a muted `Cancelled` chip instead of a winner chip. No times or climbing points were recorded, so its jersey cards repeat stage 2's and say so.
+- **Stage 4 result — Andorra la Vella.** Pogačar went alone with 50km left over the Coll d'Ordino and the Collada de Beixalis and won by 2:39 from Jarno Widar and Felix Gall. He now leads red (7:38:59, Roglič +3:21, Mas +3:32), green (82 pts) and the mountains (23 pts); Oscar Onley takes white, up 15 places.
+- **"Worn on the road by" line on jersey cards** (`.jw`). When one rider leads several classifications the jersey is worn by the next rider down, and after stage 4 that is three of the four: Pogačar leads red, green and polka dots, so Ethan Hayter rides in green and Lorenzo Fortunato in the polka dots. The line is deliberately one of the few things kept when the top panel clones a card — without it "In the jerseys" would have shown Pogačar three times over and been wrong about who is actually wearing what. Back-filled onto stages 1–3, where Hayter was already wearing green.
+
+### Changed
+
+- The "In the jerseys" panel now reflects stage 4, again with no edit of its own.
+
 ## 2026-08-24
 
 ### Added
