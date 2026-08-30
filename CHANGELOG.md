@@ -7,6 +7,24 @@ Sections follow [Keep a Changelog](https://keepachangelog.com/) conventions:
 **Fixed** for bug fixes, and **Known limitations** for things that are
 deliberately incomplete or still unverified.
 
+## 2026-08-30 — verification pass
+
+### Fixed
+
+- **Stage 5's winning time was wrong by exactly ten minutes.** The page carried `3:57:12`; the official ranking at lavuelta.es gives **3:47:02**. The error was caught by arithmetic before the network: Pogačar finished in the bunch that day, so his GC total after stage 4 (7:38:59) plus the stage time must equal his GC after stage 5 (11:26:01) — and 7:38:59 + 3:47:02 is 11:26:01 exactly, with zero bonus seconds, as it should be for a rider who took none. `3:57:12` overshot by 610 seconds.
+
+### Changed
+
+- **Every podium and finishing time on the page is now checked against the official rankings at lavuelta.es**, stage by stage. Stages 1, 2, 4, 6, 7 and 8 matched what was already published; stage 3 is confirmed by the official page returning "no rank available", which is what a cancelled stage should look like.
+- **Winner's times filled in for stages 7 and 8** — `3:49:47` for Leknessund and `3:47:06` for Coquard. These had deliberately been left blank because no source at the time gave them; the official rankings do.
+- Footer now records that podiums and times are verified against the official rankings, with the date of the last check, and no longer claims a stale "last checked after Stage 5" while carrying results through stage 8.
+
+### Known limitations
+
+- **Official route distances disagree with the pre-race route table** on at least two stages: lavuelta.es gives stage 2 as 200.1km (table says 215.2) and stage 8 as 161km (table says 176.4). The table is pre-race published data and feeds the ribbon widths and the total-distance stat, so it has been left alone rather than changed as part of a results check.
+- **Classification point totals are not from the official site.** The official rankings pages serve their stage results to a fetch but not their points/mountains tables, so those figures still come from race reports. The margins reconcile across stages (82 to Brennan's 60 after stage 5; a 33-point lead after Pogačar won stage 6), but they are not officially sourced the way the podiums now are.
+- **Some stage-5 narrative detail is unverified** — the named five-man break and the lead-out description came in via a merge and were not checked against a source in this pass.
+
 ## 2026-08-30
 
 ### Added
