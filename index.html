@@ -354,6 +354,11 @@
   }
   .result-void b{color:var(--ink);font-weight:600;}
   .stage-row .won.void{color:var(--ink-faint);background:transparent;font-style:italic;}
+  /* marks a stage whose story is a rider losing the race, not winning it */
+  .stage-row .heartbreak{
+    margin-left:8px;font-size:15px;line-height:1;
+    display:inline-block;transform:translateY(1px);
+  }
 
   .jerseys{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
@@ -797,7 +802,7 @@
     <div class="stage-item" data-terrain="hilly" data-date="2026-08-26">
       <button class="stage-row" aria-expanded="false" aria-controls="d5">
         <span class="n">05</span><span class="date">Wed 26 Aug</span>
-        <span class="route"><strong>Falset → Roquetes</strong><span class="note">Rolling Catalan coast; sprinters' chance</span></span>
+        <span class="route"><strong>Falset → Roquetes</strong><span class="won">Brennan</span><span class="note">Rolling Catalan coast; sprinters' chance</span></span>
         <span class="dist mono">171.1 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d5"><div class="detail-inner">
@@ -808,13 +813,51 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:30 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="5"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Matthew Brennan</span><span class="pt">Team Visma | Lease a Bike</span></span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Jordi Meeus</span><span class="pt">Red Bull–BORA–hansgrohe</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Vincenzo Albanese</span><span class="pt">EF Education-EasyPost</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-note">A second win in five days for Brennan, and a textbook one: Van Aert and Laporte delivered him to the front and he held off Meeus in the bunch sprint. Visma controlled the whole day and nothing changed on general classification.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">Unchanged on a sprint day — Roglič still at +3:21.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">Still leads the points, with Brennan closing after a second stage win.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Lorenzo Fortunato · XDS Astana Team</div>
+              <div class="jx">One cat.3 climb on the route, no change at the top.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Unchanged.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="mountains" data-date="2026-08-27">
       <button class="stage-row" aria-expanded="false" aria-controls="d6">
         <span class="n">06</span><span class="date">Thu 27 Aug</span>
-        <span class="route"><strong>Alcossebre → Castelló</strong><span class="note">Categorised climbing inland from the coast</span></span>
+        <span class="route"><strong>Alcossebre → Castelló</strong><span class="won">Pogačar</span><span class="note">Categorised climbing inland from the coast</span></span>
         <span class="dist mono">176.8 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d6"><div class="detail-inner">
@@ -825,13 +868,51 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 11:20 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="6"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Tadej Pogačar</span><span class="pt">UAE Team Emirates-XRG</span></span><span class="pg mono">4:12:40</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Enric Mas</span><span class="pt">Movistar Team</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Ramses Debruyne</span><span class="pt">Alpecin–Premier Tech</span></span><span class="pg mono">+0:46</span></li>
+          </ol>
+          <p class="result-note">Pogačar attacked on the gravel of the Puerto El Bartolo, ran off the road on the descent and still came back to win the sprint from Mas, who had clawed his way back to the wheel. A third stage win in six days, and his first on Spanish roads this race.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">15:38:27, with Mas up to +3:34 and Roglič slipping to +4:21.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">33 pts clear of Brennan.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jw">Worn on the road by Lorenzo Fortunato · XDS Astana Team</div>
+              <div class="jx">15 pts clear of Mas.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Debruyne closes to +0:03 with his podium finish.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="mountains" data-date="2026-08-28">
       <button class="stage-row" aria-expanded="false" aria-controls="d7">
         <span class="n">07</span><span class="date">Fri 28 Aug</span>
-        <span class="route"><strong>Vall d'Alba → Aramón Valdelinares</strong><span class="note">Summit finish; the steepest climbing of week one</span></span>
+        <span class="route"><strong>Vall d'Alba → Aramón Valdelinares</strong><span class="won">Leknessund</span><span class="note">Summit finish; the steepest climbing of week one</span></span>
         <span class="dist mono">149.9 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d7"><div class="detail-inner">
@@ -842,13 +923,50 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:40 PM · Finish ≈ 10:50 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="7"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Andreas Leknessund</span><span class="pt">Uno-X Mobility</span></span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Tobias Halland Johannessen</span><span class="pt">Uno-X Mobility</span></span><span class="pg mono">+0:34</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Wout van Aert</span><span class="pt">Team Visma | Lease a Bike</span></span><span class="pg mono">+0:47</span></li>
+          </ol>
+          <p class="result-note">A Uno-X one-two on the day King Harald V died, hours after the news reached the team. Leknessund went clear of the breakaway with 7.5km of the final climb left for his first Grand Tour stage win, and Johannessen dropped Van Aert inside the last kilometre to make it two. Van Aert had been up the road since the flag and took the intermediate sprint; Pogačar came in 19th at 4:23 but still gained on his rivals.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Tadej Pogačar</div>
+              <div class="jt">UAE Team Emirates-XRG</div>
+              <div class="jx">Lead out to 3:50 over Mas.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">A day in the break, the intermediate sprint and third on the stage take the classification off Pogačar outright — ending his hold on all three of red, green and the polka dots.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Andreas Leknessund</div>
+              <div class="jt">Uno-X Mobility</div>
+              <div class="jx">The stage win over the Valdelinares climbs takes it off Pogačar.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Unchanged.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="flat" data-date="2026-08-29">
       <button class="stage-row" aria-expanded="false" aria-controls="d8">
         <span class="n">08</span><span class="date">Sat 29 Aug</span>
-        <span class="route"><strong>Puçol → Xeraco</strong><span class="note">First stage profiled flat by the organisers</span></span>
+        <span class="route"><strong>Puçol → Xeraco</strong><span class="heartbreak" role="img" aria-label="Tadej Pogačar crashed out of the race on this stage">💔</span><span class="won">Coquard</span><span class="note">First stage profiled flat by the organisers</span></span>
         <span class="dist mono">176.4 km</span><span class="terrain">Flat</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d8"><div class="detail-inner">
@@ -858,6 +976,44 @@
           <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Puerto de Barx (cat.2), ≈22km from the finish</div></div>
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:15 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="8"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Bryan Coquard</span><span class="pt">Cofidis</span></span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Mads Pedersen</span><span class="pt">Lidl-Trek</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Jordi Meeus</span><span class="pt">Red Bull–BORA–hansgrohe</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-void"><b>💔 Pogačar crashed out of the race.</b> Around 31km from Xeraco he brushed shoulders with another rider, lost the bars and went down hard on his shoulder and face. He tried to remount, could not go on, and walked to the ambulance. Hospital assessment found a concussion, a displaced left clavicle fracture, a stable C7 fracture of the neck and multiple abrasions. He abandoned with a lead of 3:50 — the first Grand Tour he has ever failed to finish.</p>
+          <p class="result-note">In a bunch sprint on a day full of crashes, Bryan Coquard edged Mads Pedersen for the first Grand Tour stage win of his career, at 34. Enric Mas inherited the red jersey — the first Spaniard to lead the Vuelta since Jesús Herrada in 2018, and the first time Mas has led a Grand Tour.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">23:23:33, with Roglič at +1:00 and Gall at +1:11. Three times a Vuelta runner-up, in red for the first time.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">124 pts, well clear of Brennan (67) and Pedersen (58).</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Andreas Leknessund</div>
+              <div class="jt">Uno-X Mobility</div>
+              <div class="jx">19 pts, three ahead of Van Aert (16), with Mas third on 14.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">A fourth day in white.</div>
+            </div>
+          </div>
         </div>
       </div></div></div>
     </div>

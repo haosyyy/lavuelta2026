@@ -7,6 +7,18 @@ Sections follow [Keep a Changelog](https://keepachangelog.com/) conventions:
 **Fixed** for bug fixes, and **Known limitations** for things that are
 deliberately incomplete or still unverified.
 
+## 2026-08-30
+
+### Added
+
+- **Stage 8 — Pogačar crashes out, and the page says so.** A 💔 marker sits beside the route name in the running order (with an `aria-label` naming what it means), and the stage detail leads with a `.result-void` panel rather than the podium: around 31km from Xeraco he brushed shoulders with another rider, went down on his shoulder and face, tried to remount and walked to the ambulance. Concussion, a displaced left clavicle fracture, a stable C7 fracture and multiple abrasions; he abandoned 3:50 in the lead, the first Grand Tour he has failed to finish. **Bryan Coquard (Cofidis)** won the sprint for the first Grand Tour stage of his career at 34, and **Enric Mas** inherited red — the first Spaniard to lead the Vuelta since Jesús Herrada in 2018.
+- **Stages 5, 6 and 7.** Brennan's second win in Roquetes off a Visma lead-out; Pogačar's third in six days at Castelló, won in a sprint from Mas after running off the road on the Puerto El Bartolo gravel descent; and an emotional Uno-X one-two at Aramón Valdelinares on the day King Harald V died, Leknessund going clear with 7.5km left for his first Grand Tour win. Stage 5 was filled in as well as the stages that were asked for, so the running order has no gap.
+- **The jerseys moved a lot across these four days.** Pogačar held red, green and the polka dots through stage 6; Van Aert took the points classification outright on stage 7 and Leknessund the mountains, ending the triple; after stage 8 all four jerseys sit on different riders for the first time in the race — Mas, Van Aert, Leknessund and Onley — so no card needs a "worn on the road by" line.
+
+### Known limitations
+
+- **Winning times are shown only where a source gave one.** Stages 5, 7 and 8 list the podium without the winner's finishing time rather than carrying a guessed one; the gaps and `s.t.` markers are unaffected.
+
 ## 2026-08-26
 
 ### Added
