@@ -290,22 +290,6 @@
     .back-today{top:auto;bottom:18px;right:16px;}
   }
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px;}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:18px 18px 20px;}
-  .card .tag{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--azulejo-deep);}
-  .card h4{font-family:'Fraunces',serif;font-weight:560;font-size:1.15rem;margin:.3em 0 .4em;}
-  .card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0;}
-  .card .stat-line{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;color:var(--ink-faint);margin-top:11px;}
-
-  .rider-card{background:var(--panel);border-radius:3px;padding:18px 20px;border-top:3px solid var(--red);}
-  .rider-head{display:flex;align-items:center;gap:14px;margin-bottom:4px;}
-  .avatar{width:64px;height:64px;flex:none;border-radius:50%;}
-  .rider-id{min-width:0;}
-  .rider-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:1.2rem;margin:0 0 2px;}
-  .rider-card .team{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;}
-  .rider-card .headline{font-style:italic;font-family:'Fraunces',serif;color:var(--red-deep);font-size:15.5px;margin:11px 0 9px;}
-  .rider-card p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0;}
-
   /* ---------- stage results & jersey wearers ---------- */
   /* The per-stage .result-block lives in the stage markup (so it survives with
      JS off); the "In the jerseys" section at the top is cloned from the most
@@ -1321,108 +1305,6 @@
   </div>
   <p class="time-note">Start and finish times are estimates based on typical Vuelta scheduling for each stage type, not official times — confirm at lavuelta.es closer to each stage.</p>
 
-  <h3 class="section-h">Where the race could be won</h3>
-  <p class="section-sub">Five days that are built to shape the general classification.</p>
-  <div class="cards">
-    <div class="card">
-      <div class="tag">Stage 3</div>
-      <h4>Font Romeu</h4>
-      <p>The first summit finish of the race, reached after a first category climb over the Col de Mont-Louis. Too early to win the Vuelta, but the first gaps between GC riders can open here.</p>
-      <div class="stat-line">1,800m alt. · 166.7 km</div>
-    </div>
-    <div class="card">
-      <div class="tag">Stage 9</div>
-      <h4>Alto de Aitana</h4>
-      <p>Six climbs across 187.5 km before a category-1 summit finish above the Costa Blanca. Route designer Fernando Escartín has warned that "the heat could make this already challenging stage even tougher."</p>
-      <div class="stat-line">6 categorised climbs</div>
-    </div>
-    <div class="card">
-      <div class="tag">Stage 12</div>
-      <h4>Calar Alto</h4>
-      <p>The highest finish of the 2026 route, over 2,100m above sea level in the Sierra de los Filabres, reached straight off the back of the Alto de Velefique.</p>
-      <div class="stat-line">2,100m+ alt.</div>
-    </div>
-    <div class="card">
-      <div class="tag">Stage 18</div>
-      <h4>Jerez de la Frontera</h4>
-      <p>A 32.5km individual time trial along the Bay of Cádiz in the final week, when the GC is usually settling — coastal wind could still turn the standings upside down.</p>
-      <div class="stat-line">32.5 km · Individual TT</div>
-    </div>
-    <div class="card">
-      <div class="tag">Stage 20</div>
-      <h4>Collado del Alguacil</h4>
-      <p>The only climb in the race rated Categoría Especial, on the penultimate day. A brutal, near-double-digit-gradient finish built to decide the race with almost nothing left to give.</p>
-      <div class="stat-line">Categoría Especial · 8.3km at 9.8%</div>
-    </div>
-  </div>
-
-  <h3 class="section-h">Contenders</h3>
-  <p class="section-sub">Form and headlines heading into the Grand Départ — written as of 21 August 2026 and kept as a snapshot of the pre-race picture, not updated stage by stage. Jonas Vingegaard, the 2025 champion, is not defending his title after breaking his collarbone at the Tour de France.</p>
-  <div class="cards">
-    <div class="rider-card">
-      <div class="rider-head">
-        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in UAE Team Emirates-XRG colours">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#F2EFE7"/>
-        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#C11F2E"/>
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#201B16"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#F2EFE7"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="rider-id"><h4>Tadej Pogačar</h4><div class="team">UAE Team Emirates-XRG</div></div>
-      </div>
-      <div class="headline">Chasing the Grand Slam</div>
-      <p>Fresh off a record-tying fifth Tour de France title, Pogačar returns to the Vuelta for the first time since his 2019 debut, when he finished third and took the young rider jersey. A win in Granada would complete his set of all three Grand Tour titles.</p>
-    </div>
-    <div class="rider-card">
-      <div class="rider-head">
-        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in Red Bull–BORA–hansgrohe colours">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#1B2A44"/>
-        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#E8B93E"/>
-        
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#C11F2E"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#1B2A44"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="rider-id"><h4>Primož Roglič</h4><div class="team">Red Bull–BORA–hansgrohe</div></div>
-      </div>
-      <div class="headline">Riding for a record</div>
-      <p>A four-time Vuelta champion (2019, 2020, 2021, 2024), Roglič skipped this year's Tour de France to build toward a fifth title — which would make him the race's outright record holder, past Roberto Heras. At 36, and with a disrupted preparation, his form is something to watch rather than assume: his last win came at last year's Volta a Catalunya.</p>
-    </div>
-    <div class="rider-card">
-      <div class="rider-head">
-        <svg class="avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of a rider in Movistar Team colours">
-        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
-        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#12332E"/>
-        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#8FCB3E"/>
-        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#1B2A44"/>
-        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
-        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
-        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#12332E"/>
-        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
-        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
-        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
-        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-        <div class="rider-id"><h4>Enric Mas</h4><div class="team">Movistar Team</div></div>
-      </div>
-      <div class="headline">Spain's nearly man, at home</div>
-      <p>Mas has finished runner-up at the Vuelta three times without ever taking the top step, and leads a Movistar team built around him on home roads. A difficult Giro d'Italia this year complicates the picture, but a fifth place at the Vuelta a Burgos suggests his form is coming back at the right time.</p>
-    </div>
-  </div>
-
   <h3 class="section-h">Live results</h3>
   <p class="section-sub">Once a stage has been ridden, its podium and the four jersey holders are recorded on the stage itself, and the most recent set is summarised under <a href="#jerseyNow">In the jerseys</a> at the top. That's a hand-updated snapshot, not live timing — for the race as it happens, and for the full classifications beyond the top three, go to the official rankings.</p>
   <a class="results-link" href="https://www.lavuelta.es/en/rankings" target="_blank" rel="noopener">
@@ -1433,7 +1315,7 @@
     <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered. Distances, climb categories and finish details may still be adjusted by race organisers during the race.</p>
     <p>Stage results and jersey holders: entered by hand after each stage. <b>Every podium and finishing time on this page has been checked against the official rankings at lavuelta.es</b>; the classification points and gaps come from CyclingUpToDate, ProCyclingUK, Cyclingnews, Domestique, ProCyclingStats, VAVEL, TNT Sports, Velo/Outside, ESPN and FloBikes, cross-checked where they disagreed. Only the stage podium is listed; standings beyond the top few are not claimed here — see lavuelta.es for the full classifications.</p>
     <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets Stage 1's estimated first rider off (≈10:45 PM SGT, 22 Aug — converted from ≈4:45 PM CEST in Monaco).</p>
-    <p>Contender notes reflect team news and 2025–26 form as reported ahead of the Grand Départ, and are not revised as the race unfolds — the results and jersey panels above are the current picture, current as of 21 Aug 2026, before Tadej Pogačar's stage 8 crash and abandonment. Results last verified against the official rankings on 1 Sep 2026, through Stage 10.</p>
+    <p>Results last verified against the official rankings on 2 Sep 2026, through Stage 10 — Stage 11 (Cartagena → Lorca) was still racing at the time.</p>
   </footer>
 </div>
 
