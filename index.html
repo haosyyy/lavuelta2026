@@ -77,6 +77,56 @@
   }
   .route-bar b{font-style:normal;color:var(--ink);font-weight:600;}
 
+  /* final podium graphic */
+  .final-podium{text-align:center;margin:0 0 44px;}
+  .final-podium .eyebrow{color:var(--red-deep);}
+  .podium-title{
+    font-family:'Fraunces',serif;font-weight:560;
+    font-size:clamp(1.5rem,3.2vw,2rem);margin:.3em 0 .2em;
+  }
+  .podium-sub{color:var(--ink-soft);font-size:15px;margin:0 0 28px;}
+  .podium-graphic{
+    display:flex;align-items:flex-end;justify-content:center;
+    gap:18px;max-width:560px;margin:0 auto;
+  }
+  .podium-step{flex:1;display:flex;flex-direction:column;align-items:center;}
+  .podium-step.step-1{order:2;}
+  .podium-step.step-2{order:1;}
+  .podium-step.step-3{order:3;}
+  .avatar.podium-avatar{width:64px;height:64px;margin-bottom:8px;}
+  .step-1 .avatar.podium-avatar{width:88px;height:88px;}
+  .step-name{font-weight:600;font-size:14.5px;color:var(--ink);line-height:1.25;}
+  .step-1 .step-name{font-size:16.5px;}
+  .step-team{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);
+    text-transform:uppercase;letter-spacing:.03em;margin-top:2px;
+  }
+  .step-gap{
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+    color:var(--red-deep);margin-top:6px;
+  }
+  .step-1 .step-gap{color:var(--red);font-size:14px;}
+  .step-block{
+    width:100%;margin-top:10px;border-radius:4px 4px 0 0;
+    background:var(--panel);border:1px solid var(--line);border-bottom:none;
+    display:flex;align-items:flex-start;justify-content:center;padding-top:6px;
+  }
+  .step-block span{
+    font-family:'Fraunces',serif;font-weight:600;color:var(--ink-faint);font-size:1.1rem;
+  }
+  .step-1 .step-block{height:76px;background:var(--today-wash);}
+  .step-1 .step-block span{color:var(--red-deep);font-size:1.5rem;}
+  .step-2 .step-block{height:54px;}
+  .step-3 .step-block{height:38px;}
+  .podium-note{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);
+    margin:18px 0 0;
+  }
+  @media (max-width:480px){
+    .podium-graphic{gap:8px;}
+    .step-team{display:none;}
+  }
+
   /* ribbon + bike marker */
   .ribbon-wrap{position:relative;margin:44px 0 8px;padding-top:56px;}
   .ribbon{display:flex;align-items:stretch;height:16px;border-radius:3px;gap:1.5px;}
@@ -497,6 +547,72 @@
     <h1 class="title">La Vuelta a España 2026</h1>
     <div class="route-bar"><b>Monaco</b> — 3 weeks — <b>Granada</b></div>
   </header>
+
+  <section class="final-podium">
+    <div class="eyebrow">81st Edition · Final General Classification · Granada, 13 September</div>
+    <h2 class="podium-title">Enric Mas wins the 2026 Vuelta a España</h2>
+    <p class="podium-sub">Movistar's first Grand Tour win since 2019, and Spain's first Vuelta title since Alberto Contador in 2014.</p>
+    <div class="podium-graphic">
+      <div class="podium-step step-2">
+        <svg class="avatar podium-avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of Primož Roglič, runner-up, in Red Bull–BORA–hansgrohe colours">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#1B2A44"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#E8B93E"/>
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#C11F2E"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#1B2A44"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="step-name">Primož Roglič</div>
+        <div class="step-team">Red Bull–BORA–hansgrohe</div>
+        <div class="step-gap">+2:15</div>
+        <div class="step-block"><span>2</span></div>
+      </div>
+      <div class="podium-step step-1">
+        <svg class="avatar podium-avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of Enric Mas, winner, in Movistar Team colours">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#12332E"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#8FCB3E"/>
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#1B2A44"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#12332E"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="step-name">Enric Mas</div>
+        <div class="step-team">Movistar Team</div>
+        <div class="step-gap">Winner</div>
+        <div class="step-block"><span>1</span></div>
+      </div>
+      <div class="podium-step step-3">
+        <svg class="avatar podium-avatar" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated icon of Felix Gall, third place, in Decathlon CMA CGM colours">
+        <circle cx="48" cy="48" r="47" fill="var(--panel-2)" stroke="var(--line)" stroke-width="1"/>
+        <path d="M16,95 Q17,68 32,62 L64,62 Q79,68 80,95 Z" fill="#EAF1F6"/>
+        <path d="M20,88 L38,64 L46,64 L30,92 Z" fill="#1E5A8C"/>
+        <path d="M40,62 Q48,70 56,62 L54,58 Q48,64 42,58 Z" fill="#1E5A8C"/>
+        <rect x="41" y="50" width="14" height="14" rx="4" fill="#D9A876"/>
+        <circle cx="48" cy="38" r="17" fill="#D9A876"/>
+        <path d="M30,36 A18,18 0 0 1 66,36 L66,40 Q48,31 30,40 Z" fill="#EAF1F6"/>
+        <path d="M40,24 L40,33 M48,22 L48,33 M56,24 L56,33" stroke="var(--panel-2)" stroke-width="1.3" opacity="0.5"/>
+        <rect x="33" y="41" width="30" height="8" rx="4" fill="#201B16"/>
+        <rect x="36" y="42.4" width="9" height="3" rx="1.5" fill="#ffffff" opacity="0.35"/>
+        <path d="M42,53 Q48,57 54,53" stroke="#6B4A32" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+        <div class="step-name">Felix Gall</div>
+        <div class="step-team">Decathlon CMA CGM</div>
+        <div class="step-gap">+2:44</div>
+        <div class="step-block"><span>3</span></div>
+      </div>
+    </div>
+    <p class="podium-note">Richard Carapaz (EF Education-EasyPost) finished fourth at 6:54. Full classification: <a href="https://www.lavuelta.es/en/rankings" target="_blank" rel="noopener">lavuelta.es</a>.</p>
+  </section>
 
   <div class="ribbon-wrap">
     <div class="bike-marker" id="bikeMarker" style="left:0">
@@ -1388,7 +1504,7 @@
     <div class="stage-item" data-terrain="flat" data-date="2026-09-08">
       <button class="stage-row" aria-expanded="false" aria-controls="d16">
         <span class="n">16</span><span class="date">Tue 8 Sep</span>
-        <span class="route"><strong>Cortegana → La Rábida</strong><span class="note">Coastal run-in, high speeds expected</span></span>
+        <span class="route"><strong>Cortegana → La Rábida</strong><span class="won">Brennan</span><span class="note">Coastal run-in, high speeds expected</span></span>
         <span class="dist mono">186 km</span><span class="terrain">Flat</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d16"><div class="detail-inner">
@@ -1399,13 +1515,50 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:15 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="16"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Matthew Brennan</span><span class="pt">Team Visma | Lease a Bike</span></span><span class="pg mono">—</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Bryan Coquard</span><span class="pt">Cofidis</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Vito Braet</span><span class="pt">Lotto Intermarché</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-note">No categorised climbs and another textbook Visma lead-out delivered Brennan's fourth stage win — the first rider since Fernando Gaviria (2017 Giro) to win four stages on a Grand Tour debut. Van Aert's 6th place capped a flawless team day. No change at the top of GC.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">Unchanged: Gall +2:06, Roglič +2:10.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Extends further with the lead-out and the intermediate sprint.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Santiago Buitrago</div>
+              <div class="jt">Bahrain Victorious</div>
+              <div class="jx">69 pts — unaffected by a day with no categorised climbs.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Unchanged, safely in the bunch.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="flat" data-date="2026-09-09">
       <button class="stage-row" aria-expanded="false" aria-controls="d17">
         <span class="n">17</span><span class="date">Wed 9 Sep</span>
-        <span class="route"><strong>Dos Hermanas → Sevilla</strong><span class="note">Flattest stage of the race</span></span>
+        <span class="route"><strong>Dos Hermanas → Sevilla</strong><span class="won">Brennan</span><span class="note">Flattest stage of the race</span></span>
         <span class="dist mono">189.2 km</span><span class="terrain">Flat</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d17"><div class="detail-inner">
@@ -1416,13 +1569,50 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:15 PM · Finish ≈ 11:15 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="17"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Matthew Brennan</span><span class="pt">Team Visma | Lease a Bike</span></span><span class="pg mono">—</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Jordi Meeus</span><span class="pt">Red Bull–BORA–hansgrohe</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Magnus Cort</span><span class="pt">Uno-X Mobility</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-note">A fifth stage win on his Grand Tour debut for the 21-year-old Brennan, on the flattest stage of the race. GC contenders finished safely in the bunch with the hierarchy intact ahead of the following day's decisive time trial.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">Unchanged: Gall +2:06, Roglič +2:10 — into the Jerez time trial.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Extends again; Brennan closes in behind as runner-up.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Santiago Buitrago</div>
+              <div class="jt">Bahrain Victorious</div>
+              <div class="jx">Unchanged — another flat day.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Unchanged.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="itt" data-date="2026-09-10">
       <button class="stage-row" aria-expanded="false" aria-controls="d18">
         <span class="n">18</span><span class="date">Thu 10 Sep</span>
-        <span class="route"><strong>El Puerto de Santa María → Jerez</strong><span class="note">Coastal time trial; final week GC test</span></span>
+        <span class="route"><strong>El Puerto de Santa María → Jerez</strong><span class="won">Küng</span><span class="note">Coastal time trial; final week GC test</span></span>
         <span class="dist mono">32.5 km</span><span class="terrain">Time trial</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d18"><div class="detail-inner">
@@ -1433,13 +1623,50 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">First rider ≈ 7:00 PM · Last (GC favourites) ≈ 10:15 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="18"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result · individual time trial</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Stefan Küng</span><span class="pt">Tudor Pro Cycling</span></span><span class="pg mono">35:22.82</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Callum Thornley</span><span class="pt">Red Bull–BORA–hansgrohe</span></span><span class="pg mono">+2.27</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">João Almeida</span><span class="pt">UAE Team Emirates-XRG</span></span><span class="pg mono">+8.78</span></li>
+          </ol>
+          <p class="result-note">Roglič went fastest of the GC contenders — 4th on the stage, 19s behind Küng — and pulled 33s back out of Mas, who rode a controlled 12th-place ride to protect the jersey. Gall lost significantly more time and slipped further off the podium pace. Mas's overall lead over Roglič is trimmed to 1:37 heading into the final two mountain stages.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">Lead over Roglič cut to 1:37; Gall drops further back in third.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Unaffected by a time trial.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Santiago Buitrago</div>
+              <div class="jt">Bahrain Victorious</div>
+              <div class="jx">Unchanged; no categorised climbs today.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Holds it into the final mountain weekend.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="hilly" data-date="2026-09-11">
       <button class="stage-row" aria-expanded="false" aria-controls="d19">
         <span class="n">19</span><span class="date">Fri 11 Sep</span>
-        <span class="route"><strong>Vélez-Málaga → Peñas Blancas</strong><span class="note">Second-longest stage, category-1 uphill finish</span></span>
+        <span class="route"><strong>Vélez-Málaga → Peñas Blancas</strong><span class="won">Dunbar</span><span class="note">Second-longest stage, category-1 uphill finish</span></span>
         <span class="dist mono">205.1 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d19"><div class="detail-inner">
@@ -1450,13 +1677,50 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 7:00 PM · Finish ≈ 11:45 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="19"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Eddie Dunbar</span><span class="pt">Pinarello Q36.5 Pro Cycling</span></span><span class="pg mono">5:00:54</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Santiago Buitrago</span><span class="pt">Bahrain Victorious</span></span><span class="pg mono">+0:14</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Thomas Gloag</span><span class="pt">Pinarello Q36.5 Pro Cycling</span></span><span class="pg mono">+0:23</span></li>
+          </ol>
+          <p class="result-note">Buitrago attacked from the lead group with 2km left and looked to have the stage won, but Dunbar closed the gap on the steep final ramps and came past with 350m remaining — his third career Vuelta stage win. The GC contenders' group arrived together at the summit; no change among the top five overall.</p>
+          <div class="rl">Jerseys after this stage</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">Unchanged: 1:37 over Roglič — one mountain stage left.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Unchanged lead.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Santiago Buitrago</div>
+              <div class="jt">Bahrain Victorious</div>
+              <div class="jx">Extends further with his runner-up finish.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Unchanged, into the Vuelta's final mountain showdown.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="mountains" data-date="2026-09-12">
       <button class="stage-row" aria-expanded="false" aria-controls="d20">
         <span class="n">20</span><span class="date">Sat 12 Sep</span>
-        <span class="route"><strong>La Calahorra → Collado del Alguacil</strong><span class="note">Categoría Especial summit — the hardest climb of the race</span></span>
+        <span class="route"><strong>La Calahorra → Collado del Alguacil</strong><span class="won">Landa</span><span class="note">Categoría Especial summit — the hardest climb of the race</span></span>
         <span class="dist mono">187 km</span><span class="terrain">Mountains</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d20"><div class="detail-inner">
@@ -1467,13 +1731,50 @@
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 6:30 PM · Finish ≈ 11:15 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="20"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
         </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result · the queen stage</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Mikel Landa</span><span class="pt">Soudal Quick-Step</span></span><span class="pg mono">—</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Tobias Halland Johannessen</span><span class="pt">Uno-X Mobility</span></span><span class="pg mono">+0:47</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Ramses Debruyne</span><span class="pt">Alpecin–Premier Tech</span></span><span class="pg mono">+1:27</span></li>
+          </ol>
+          <p class="result-note">Landa soloed away from the breakaway on the Categoría Especial finale for his first win in over five years. Behind, Roglič's expected attack never came; Gall was the one who moved, gapping Mas in the closing kilometres but nowhere near enough to threaten the podium order. Mas defended the jersey to mathematically secure the overall title. Sepp Kuss produced a huge ride to jump to 5th overall; Onley slipped to 6th on GC but kept the white jersey.</p>
+          <div class="rl">Jerseys after this stage — the race is decided</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">2:15 over Roglič, with Gall third at 2:44 — mathematically won.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Unassailable heading into the final day.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains</div>
+              <div class="jn">Santiago Buitrago</div>
+              <div class="jt">Bahrain Victorious</div>
+              <div class="jx">Effectively secured with one stage remaining.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">Retains it into Granada despite dropping to 6th overall.</div>
+            </div>
+          </div>
+        </div>
       </div></div></div>
     </div>
 
     <div class="stage-item" data-terrain="hilly" data-date="2026-09-13">
       <button class="stage-row" aria-expanded="false" aria-controls="d21">
         <span class="n">21</span><span class="date">Sun 13 Sep</span>
-        <span class="route"><strong>Carrefour Granada → Granada</strong><span class="note">Circuit finish, five ascents up to the Alhambra</span></span>
+        <span class="route"><strong>Carrefour Granada → Granada</strong><span class="won">Johannessen</span><span class="note">Circuit finish, five ascents up to the Alhambra</span></span>
         <span class="dist mono">99.4 km</span><span class="terrain">Hilly</span><span class="chev">›</span>
       </button>
       <div class="stage-detail"><div id="d21"><div class="detail-inner">
@@ -1483,6 +1784,43 @@
           <div class="detail-block"><div class="dl">Climbs</div><div class="dv">Alhambra circuit climb, uncategorised, ridden 5 times</div></div>
           <div class="detail-block"><div class="dl">Timing (SGT, provisional)</div><div class="dv mono">Start ≈ 8:30 PM · Finish ≈ 11:45 PM</div></div>
           <div class="detail-block profile-block"><div class="dl">Climb profile</div><div class="profile-chart" data-profile="21"></div><div class="profile-note">Schematic profile — illustrative, not GPX-precise</div></div>
+        </div>
+
+        <div class="result-block">
+          <div class="rl">Stage result · final stage</div>
+          <ol class="podium">
+            <li class="p1"><span class="pr">1</span><span class="pi"><span class="pn">Tobias Halland Johannessen</span><span class="pt">Uno-X Mobility</span></span><span class="pg mono">—</span></li>
+            <li class="p2"><span class="pr">2</span><span class="pi"><span class="pn">Alessandro Romele</span><span class="pt">XDS Astana Team</span></span><span class="pg mono">s.t.</span></li>
+            <li class="p3"><span class="pr">3</span><span class="pi"><span class="pn">Ramses Debruyne</span><span class="pt">Alpecin–Premier Tech</span></span><span class="pg mono">s.t.</span></li>
+          </ol>
+          <p class="result-note">GC times were neutralised with 9.8km remaining, so Mas's overall win was secured before the stage was even decided. A late three-up move on the Alhambra circuit — Debruyne, Romele and Johannessen — split clear of Brennan in the final kilometre, and Johannessen held off Romele's late charge for his first Grand Tour stage win, the day after finishing 2nd on the queen stage. Enric Mas crossed the line with his Movistar teammates around him: Spain's first Vuelta champion since Alberto Contador in 2014, Movistar's first Grand Tour win since 2019, and his first Grand Tour title at 31 after four previous Vuelta podiums.</p>
+          <div class="rl">Final classifications — 81st Vuelta a España</div>
+          <div class="jerseys">
+            <div class="jcard j-red" data-jersey="red">
+              <div class="jl">Red · General classification — winner</div>
+              <div class="jn">Enric Mas</div>
+              <div class="jt">Movistar Team</div>
+              <div class="jx">Winner, 2:15 clear of Roglič; Gall completes the podium at 2:44. Carapaz 4th at 6:54.</div>
+            </div>
+            <div class="jcard j-green" data-jersey="green">
+              <div class="jl">Green · Points — winner</div>
+              <div class="jn">Wout van Aert</div>
+              <div class="jt">Team Visma | Lease a Bike</div>
+              <div class="jx">Also won the combativity award; 7 stage wins for Visma | Lease a Bike across the race.</div>
+            </div>
+            <div class="jcard j-polka" data-jersey="polka">
+              <div class="jl">Blue polka dot · Mountains — winner</div>
+              <div class="jn">Santiago Buitrago</div>
+              <div class="jt">Bahrain Victorious</div>
+              <div class="jx">The fifth Colombian to win the Vuelta's mountains classification.</div>
+            </div>
+            <div class="jcard j-white" data-jersey="white">
+              <div class="jl">White · Best young rider — winner</div>
+              <div class="jn">Oscar Onley</div>
+              <div class="jt">Netcompany INEOS</div>
+              <div class="jx">The first British rider to win the Vuelta's young rider classification.</div>
+            </div>
+          </div>
         </div>
       </div></div></div>
     </div>
@@ -1500,7 +1838,7 @@
     <p>Route, dates and stage profiles: La Vuelta official (lavuelta.es), FloBikes, Cyclingnews and Domestique Cycling, current as of 21 Aug 2026. 23 teams and around 180 riders are entered. Distances, climb categories and finish details may still be adjusted by race organisers during the race.</p>
     <p>Stage results and jersey holders: entered by hand after each stage. <b>Every podium and finishing time on this page has been checked against the official rankings at lavuelta.es</b>; the classification points and gaps come from CyclingUpToDate, ProCyclingUK, Cyclingnews, Domestique, ProCyclingStats, VAVEL, TNT Sports, Velo/Outside, ESPN and FloBikes, cross-checked where they disagreed. Only the stage podium is listed; standings beyond the top few are not claimed here — see lavuelta.es for the full classifications.</p>
     <p>Times shown are in Singapore time (GMT+8) and are estimates based on typical Vuelta stage-start patterns, not confirmed timings — check lavuelta.es on the day. The countdown above targets Stage 1's estimated first rider off (≈10:45 PM SGT, 22 Aug — converted from ≈4:45 PM CEST in Monaco).</p>
-    <p>Results last verified against the official rankings on 6 Sep 2026, through Stage 15 — the race enters its second rest day before Stage 16 (Cortegana → La Rábida) on Tuesday 8 September.</p>
+    <p>Results last verified against the official rankings on 13 Sep 2026 — the 81st Vuelta a España is complete. All 21 stages and final classifications are recorded above; nothing further will change.</p>
   </footer>
 </div>
 
